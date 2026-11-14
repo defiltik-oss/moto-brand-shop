@@ -1,0 +1,34 @@
+---
+/**
+ * ScrollHelper – minimalist floating Liquid Glass up/down navigation button
+ * fixed in the bottom-right corner.
+ * - At the top of the page (Hero): points down and smoothly scrolls to `#catalog`.
+ * - After scrolling down: rotates 180° and smoothly scrolls back to `#top`.
+ */
+---
+
+<button
+  type="button"
+  data-scroll-helper
+  data-dir="down"
+  aria-label="Перейти до каталогу"
+  class="glass glass-lift group fixed right-5 bottom-5 z-40 flex h-12 w-12 items-center justify-center rounded-full text-fg/85 transition-colors hover:text-accent md:right-8 md:bottom-8 md:h-13 md:w-13"
+>
+  <svg
+    data-scroll-icon
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-data-[dir=up]:rotate-180"
+    aria-hidden="true"
+  >
+    <path d="M12 5v14"></path>
+    <path d="m19 12-7 7-7-7"></path>
+  </svg>
+</button>

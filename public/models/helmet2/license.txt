@@ -1,0 +1,11 @@
+Model Information:
+* title:	F1 Helmet Austrian GP 2018
+* source:	https://sketchfab.com/3d-models/f1-helmet-austrian-gp-2018-4c655f55a60a4600a21a90f47edae638
+* author:	VTX (https://sketchfab.com/VTX_car)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "F1 Helmet Austrian GP 2018" (https://sketchfab.com/3d-models/f1-helmet-austrian-gp-2018-4c655f55a60a4600a21a90f47edae638) by VTX (https://sketchfab.com/VTX_car) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

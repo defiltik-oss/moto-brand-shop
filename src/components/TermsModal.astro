@@ -1,0 +1,30 @@
+---
+import { terms, TERMS_VERSION } from '../data/terms';
+import { SITE_CONFIG } from '../data/config';
+---
+
+<dialog id="terms-dialog" class="rider-dialog liquid-glass-elevated" aria-labelledby="terms-title" aria-modal="true" closedby="none" data-version={TERMS_VERSION}>
+  <div class="terms-header">
+    <div>
+      <h2 id="terms-title" data-i18n="terms.title">{terms.uk.title}</h2>
+      <p class="text-sm text-muted"><span data-terms-copy="version">{terms.uk.version}</span> {TERMS_VERSION}</p>
+    </div>
+  </div>
+  <details class="terms-disclosure">
+    <summary data-terms-copy="readMore">{terms.uk.readMore}</summary>
+    <div class="terms-body">
+      {Object.entries(terms).map(([locale, copy]) => (
+        <ol class="terms-sections" lang={locale} data-terms-language={locale} hidden={locale !== 'uk'}>
+          {copy.sections.map(([title, paragraph]) => (
+            <li><h3>{title}</h3><p>{paragraph}</p></li>
+          ))}
+        </ol>
+      ))}
+      <a class="terms-contact" href={`https://t.me/${SITE_CONFIG.managerUsername}`} target="_blank" rel="noopener noreferrer">@{SITE_CONFIG.managerUsername}</a>
+    </div>
+  </details>
+  <div class="terms-actions">
+    <label><input id="terms-remember" type="checkbox" /> <span data-terms-copy="remember">{terms.uk.remember}</span></label>
+    <button type="button" id="terms-accept" class="btn-primary rounded-xl px-4 py-2" data-terms-copy="accept">{terms.uk.accept}</button>
+  </div>
+</dialog>

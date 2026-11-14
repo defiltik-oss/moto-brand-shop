@@ -1,0 +1,120 @@
+<div id="catalog-admin-controls" hidden>
+<button type="button" id="catalog-admin-open" class="liquid-pill mt-4 inline-flex items-center gap-2 px-4 py-2.5 font-semibold">
+  <span aria-hidden="true">+</span> Додати товар
+</button>
+<p id="catalog-admin-feedback" role="status" class="mb-3 text-sm text-muted" hidden></p>
+<div id="product-admin-actions" hidden>
+  <div data-product-admin class="flex flex-wrap items-center gap-2">
+    <button type="button" data-edit-product class="liquid-pill inline-grid h-9 w-9 place-items-center" aria-label="Редагувати товар" title="Редагувати товар">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m16 4 4 4M4 20l4-.8L20 7.2a1.4 1.4 0 0 0 0-2L18.8 4a1.4 1.4 0 0 0-2 0L4.8 16Z" />
+      </svg>
+    </button>
+    <select data-product-status class="glass-sub min-h-9 rounded-lg px-2 text-sm" aria-label="Статус товару">
+      <option value="in_stock">В наявності</option>
+      <option value="coming_soon">Скоро у продажу</option>
+      <option value="out_of_stock">Немає в наявності</option>
+    </select>
+  </div>
+</div>
+<dialog id="catalog-admin" class="liquid-glass-elevated drawer-dialog w-[min(94vw,44rem)] p-4 text-fg sm:p-6" aria-labelledby="catalog-admin-title">
+  <header class="drawer-heading mb-4 pb-3 flex items-start justify-between gap-3">
+    <h2 id="catalog-admin-title" class="text-xl font-semibold">Додати товар</h2>
+    <form method="dialog"><button class="liquid-pill modal-top-close" aria-label="Закрити">×</button></form>
+  </header>
+  <div class="drawer-body">
+  <label>Товар <select id="catalog-admin-pick" class="glass-sub rounded-lg p-2"></select></label>
+  <form id="catalog-admin-form" class="mt-4 grid gap-3">
+    <section id="catalog-admin-gallery" class="glass-sub grid gap-3 rounded-xl p-4" aria-labelledby="catalog-gallery-title">
+      <h3 id="catalog-gallery-title" class="font-semibold">Основна галерея</h3>
+    </section>
+    <div id="catalog-admin-variants" class="grid gap-3"></div>
+    <button id="catalog-admin-add-color" type="button" class="liquid-pill px-3 py-2">Додати колір</button>
+
+    <label>ID товару <input required name="id" pattern="[a-z0-9][a-z0-9\-]{0,63}" maxlength="64" placeholder="my-product" /></label>
+    <div class="admin-language-fields">
+    <label>Назва (UA) <input required name="titleUk" maxlength="100" /></label>
+    <label>Назва (EN) <input name="titleEn" maxlength="100" /></label>
+    <label>Категорія (UA) <input name="categoryUk" maxlength="80" /></label>
+    <label>Категорія (EN) <input name="categoryEn" maxlength="80" /></label>
+    </div>
+    <label>Опис (UA) <textarea name="descriptionUk" maxlength="1200"></textarea></label>
+    <label>Опис (EN) <textarea name="descriptionEn" maxlength="1200"></textarea></label>
+    <label>Ціна, ₴ <input name="price" type="number" min="1" max="1000000" step="1" /></label>
+    <label>Статус <select name="statusType">
+      <option value="in_stock">В наявності</option>
+      <option value="out_of_stock">Немає в наявності</option>
+      <option value="coming_soon">Скоро у продажу</option>
+    </select></label>
+    <label class="flex items-center gap-2"><input type="checkbox" name="hidden" /> Приховати в каталозі</label>
+    <button type="submit" class="btn-primary rounded-xl px-4 py-2">Зберегти товар</button>
+    <p id="catalog-admin-status" role="status" class="text-sm"></p>
+  </form>
+  </div>
+</dialog>
+</div>
+<style>
+  .admin-language-fields { display: grid; gap: .75rem; }
+  @media (min-width: 34rem) {
+    .admin-language-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  #catalog-admin-form :global(input[type=file]::file-selector-button) {
+    border: 1px solid var(--c-border);
+    border-radius: .6rem;
+    margin-inline-end: .5rem;
+    padding: .5rem .65rem;
+    background: var(--lg-sub-fill);
+    color: var(--c-fg);
+    cursor: pointer;
+  }
+  #catalog-admin-form :global(.admin-photo-list) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: .5rem;
+  }
+  #catalog-admin-form :global(.admin-photo-list:empty) { display: none; }
+  #catalog-admin-form :global(.admin-photo-list > div) { position: relative; }
+  #catalog-admin-form :global(.admin-photo-list img) {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: .65rem;
+    border: 1px solid var(--c-border);
+  }
+  #catalog-admin-form :global(.admin-photo-list button) {
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: var(--c-bg);
+  }
+  #catalog-admin { width: min(44rem, calc(100vw - 1.5rem)); }
+  #catalog-admin .drawer-body { min-width: 0; overflow-x: hidden; padding: .25rem .5rem 1rem 0; scrollbar-width: thin; scrollbar-gutter: stable; }
+  #catalog-admin-pick { display: block; width: 100%; max-width: 100%; margin-top: .5rem; }
+  #catalog-admin-form :global(section) { display: grid; gap: .85rem; padding: 1rem; }
+  #catalog-admin-form :global(h3) { margin: 0; line-height: 1.4; font-size: .95rem; font-weight: 600; }
+  #catalog-admin-form :global(label) { overflow-wrap: anywhere; }
+  #catalog-admin-form :global(input[type=checkbox]) { width: 1rem; height: 1rem; padding: 0; }
+  #catalog-admin-form > label:has(input[type=checkbox]) { display: flex; }
+  #catalog-admin-form { grid-template-columns: minmax(0, 1fr); }
+  #catalog-admin-form :global(*) { min-width: 0; box-sizing: border-box; }
+  #catalog-admin-form :global(label) { display: grid; gap: .4rem; font-size: .85rem; }
+  #catalog-admin-form :global(input), #catalog-admin-form :global(textarea), #catalog-admin-form :global(select) { max-width: 100%; border: 1px solid var(--c-border); border-radius: .8rem; padding: .7rem; background: var(--lg-sub-fill); color: var(--c-fg); }
+  #catalog-admin-form :global(textarea) { resize: vertical; min-height: 5rem; }
+  #catalog-admin-form :global(fieldset) { margin: 0; padding: 1rem; }
+  #catalog-admin-form :global(input[type=file]) { width: 100%; font-size: .75rem; }
+  #catalog-admin-form :global(input[type=color]) { width: 100%; height: 2.5rem; padding: .2rem; }
+  #catalog-admin-form[hidden] { display: none; }
+  #catalog-admin::backdrop { background: rgb(0 0 0 / .6); }
+  #catalog-admin-form :is(input:not([type='checkbox'], [type='color']), select, textarea) {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: .5rem .625rem;
+    border: 1px solid var(--c-border);
+    border-radius: .5rem;
+    background: var(--c-bg);
+    color: var(--c-fg);
+  }
+</style>

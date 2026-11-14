@@ -1,0 +1,146 @@
+---
+/**
+ * Hero — Головний блок Alexov Shop (Liquid Glass 2.0 з акуратною рамкою поверх фотофону Shtorm Series).
+ * Лічильник підписників суворо зафіксовано на значенні «6.52K».
+ */
+---
+
+<section id="top" class="relative px-4 pt-6 pb-10 sm:px-6 sm:pt-10 md:pb-14">
+  <div class="mx-auto max-w-[1140px]">
+    <div data-reveal class="glass relative overflow-hidden rounded-2xl p-6 sm:p-10 md:p-12">
+      <div class="relative z-10 grid items-center gap-8 md:grid-cols-12 md:gap-12">
+        <!-- Маскот бренду -->
+        <div class="order-1 flex justify-center md:order-2 md:col-span-5">
+          <div class="relative w-52 sm:w-64 md:w-full md:max-w-[320px]">
+            <div class="glass-sub relative aspect-square overflow-hidden rounded-2xl p-5 sm:p-7">
+              <img
+                src="/mascot.png"
+                alt="Alexov Shop"
+                width="1487"
+                height="1058"
+                fetchpriority="high"
+                class="h-full w-full object-contain"
+              />
+              <span class="glass absolute right-3 bottom-3 inline-flex items-center gap-2 rounded-lg px-2.5 py-1 font-mono text-[10px] font-medium tracking-wider text-fg uppercase">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                <span data-i18n="hero.shopBadge">ALEXOV SHOP</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Текстовий блок та кнопки дій -->
+        <div class="order-2 text-center md:order-1 md:col-span-7 md:text-left">
+          <span data-i18n="hero.badge" class="tech-badge">
+            ОФІЦІЙНИЙ МАГАЗИН МЕРЧУ ТА МЕДІА • ALEXOV SHOP
+          </span>
+
+          <div class="mt-4 flex justify-center md:justify-start">
+            <img
+              src="/logo.png"
+              width="1400"
+              height="295"
+              alt="Alexov Shop"
+              class="h-7 w-auto opacity-95 sm:h-9"
+            />
+          </div>
+
+          <h1 class="mt-5 text-3xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.05]">
+            <span data-i18n="hero.title" class="slogan-gradient">Shape your ride style!</span>
+          </h1>
+
+          <p
+            data-i18n="hero.greeting"
+            class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base md:mx-0"
+          >
+            Вітаємо в Alexov Shop! Лімітований фірмовий одяг, зносостійкі вінілові стікерпаки, свіжі стант-випуски на YouTube та рекламні інтеграції.
+          </p>
+
+          <!-- Кнопки швидкого переходу -->
+          <div class="mt-7 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+            <a
+              href="#catalog"
+              data-anchor-link="catalog"
+              class="btn-primary-glass inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-xs font-semibold tracking-wide uppercase sm:px-7"
+            >
+              <span data-i18n="hero.ctaCatalog">Перейти в каталог</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+
+            <a
+              href="#media"
+              data-anchor-link="media"
+              class="glass-sub glass-lift inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-xs font-medium tracking-wide text-fg uppercase sm:px-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="text-fg/80"
+              >
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+              </svg>
+              <span data-i18n="hero.ctaVideo">Дивитись YouTube</span>
+            </a>
+
+            <a
+              href="#promo"
+              data-anchor-link="promo"
+              class="glass-sub glass-lift inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-xs font-medium tracking-wide text-muted hover:text-fg uppercase"
+            >
+              <span data-i18n="hero.ctaPromo">Реклама та PR</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ключові показники (суворо 6.52K підписників, адаптивна сітка без виходу за межі) -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 pt-6 text-left" style="box-shadow: inset 0 1px 0 0 var(--c-divider);">
+        <div class="liquid-pill rounded-xl px-4 py-3.5 sm:px-5 sm:py-4 flex sm:block items-center justify-between gap-3 min-w-0 overflow-hidden">
+          <p
+            data-i18n="hero.stat1Label"
+            class="text-[12px] sm:text-xs font-medium text-muted order-2 sm:order-2 sm:mt-1"
+          >
+            Підписників YouTube
+          </p>
+          <p
+            data-i18n="hero.stat1Value"
+            class="font-mono text-lg sm:text-2xl font-semibold tracking-tight text-fg order-1 sm:order-1 shrink-0"
+          >
+            6.52K
+          </p>
+        </div>
+
+        <div class="liquid-pill rounded-xl px-4 py-3.5 sm:px-5 sm:py-4 flex sm:block items-center justify-between gap-3 min-w-0 overflow-hidden">
+          <p
+            data-i18n="hero.stat2Label"
+            class="text-[12px] sm:text-xs font-medium text-muted order-2 sm:order-2 sm:mt-1"
+          >
+            Оригінальний мерч
+          </p>
+          <p class="font-mono text-lg sm:text-2xl font-semibold tracking-tight text-fg order-1 sm:order-1 shrink-0">
+            100%
+          </p>
+        </div>
+
+        <div class="liquid-pill rounded-xl px-4 py-3.5 sm:px-5 sm:py-4 flex sm:block items-center justify-between gap-3 min-w-0 overflow-hidden">
+          <p
+            data-i18n="hero.stat3Label"
+            class="text-[12px] sm:text-xs font-medium text-muted order-2 sm:order-2 sm:mt-1"
+          >
+            Відправка по Україні
+          </p>
+          <p
+            data-i18n="hero.stat3Value"
+            class="font-mono text-lg sm:text-2xl font-semibold tracking-tight text-fg order-1 sm:order-1 shrink-0"
+          >
+            1–2 дні
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

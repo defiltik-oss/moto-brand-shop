@@ -1,0 +1,25 @@
+<dialog id="role-shop" class="glass-modal interface-drawer role-shop drawer-dialog" aria-labelledby="role-shop-title">
+ <header class="role-shop-header"><h3 id="role-shop-title" data-role-label="title">Магазин ролей</h3><button type="button" id="role-shop-close" class="liquid-pill modal-top-close" aria-label="Закрити">×</button></header>
+ <div class="role-shop-body">
+  <div class="role-wallet"><span data-role-label="balance">Баланс</span><strong><span id="role-balance">—</span> JET</strong></div>
+  <p id="role-status" role="status" aria-live="polite"></p>
+  <button type="button" id="role-refresh">↻ <span data-role-label="refresh">Оновити</span></button>
+  <div id="role-catalog"></div>
+  <h4 data-role-label="history">Останні 50 транзакцій</h4><ol id="role-history"></ol>
+ </div>
+</dialog>
+<style>
+.role-shop{padding:0;border:1px solid #8884;border-radius:28px;width:min(600px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:hidden;margin:auto}
+.role-shop[open]{display:flex;flex-direction:column}.role-shop::backdrop{background:#0009;backdrop-filter:blur(5px)}
+.role-shop-header{flex:none;display:flex;justify-content:space-between;align-items:center;padding:calc(1.5rem + var(--site-safe-top)) 1.5rem 1.25rem;border-bottom:1px solid #8883;gap:12px}.role-shop-header h3{font-size:20px;font-weight:700}.role-shop-header button{width:44px;height:44px;font-size:22px;flex:none}
+.role-shop-body{overflow-y:auto;overscroll-behavior:contain;padding:20px;min-height:0}.role-wallet{display:flex;justify-content:space-between;align-items:center;padding:16px;background:#8881;border:1px solid #8883;border-radius:18px}.role-wallet strong{font-size:22px}
+button{border:1px solid #8885;border-radius:12px;padding:8px 12px}button:focus-visible{outline:2px solid currentColor;outline-offset:3px}#role-status{margin:12px 0;font-size:13px;min-height:20px}h4{font-weight:650;margin:24px 0 12px}
+:global(.role-product){display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid #8883}:global(.role-product small){display:block;font-size:12px;opacity:.75;margin-top:4px}:global(.role-product button:disabled){opacity:.5}
+#role-history{list-style:none;padding:0;display:grid;gap:8px}:global(.role-transaction){display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;border:1px solid #8883;border-radius:16px;padding:14px;background:#8881}:global(.role-transaction time){display:block;font-size:12px;opacity:.7;margin-top:5px}:global(.role-transaction strong){white-space:nowrap;font-variant-numeric:tabular-nums}:global(.role-transaction[data-credit="true"] strong){color:#148248}:global(.role-transaction[data-credit="false"] strong){color:#b93445}:global([data-theme="dark"] .role-transaction[data-credit="true"] strong){color:#75e5a6}:global([data-theme="dark"] .role-transaction[data-credit="false"] strong){color:#ef9ca6}
+@media(max-width:480px){.role-shop{width:100%;max-height:100dvh;height:100dvh;border-radius:0;border:0}.role-shop-body{padding-bottom:max(20px,env(safe-area-inset-bottom))}}
+</style>
+<style>
+  @media (max-width: 360px) {
+    #role-catalog :global(.role-product) { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

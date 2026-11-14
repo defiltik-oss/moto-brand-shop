@@ -1,0 +1,76 @@
+---
+/**
+ * SplashScreen — Стартовий екран завантаження Alexov Shop з фірмовим маскотом (`/mascot.png`)
+ * та логотипом бренду (`/logo.png`). Після завантаження плавно зникає та відкриває інтерфейс.
+ */
+---
+
+<div
+  id="splash-screen"
+  data-splash-screen
+  class="splash-screen"
+  role="status"
+  aria-live="polite"
+  aria-label="Завантаження Alexov Shop"
+>
+  <div class="splash-mascot-card">
+    <!-- Фірмовий маскот бренду -->
+    <div class="relative mb-4 flex h-32 w-32 sm:h-36 sm:w-36 items-center justify-center rounded-2xl bg-white/[0.04] p-3 border border-white/10">
+      <img
+        src="/mascot.png"
+        alt="Alexov Mascot"
+        width="1487"
+        height="1058"
+        fetchpriority="high"
+        class="h-full w-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.65)]"
+      />
+    </div>
+
+    <!-- Фірмовий логотип бренду -->
+    <img
+      data-splash-logo
+      src="/logo.png"
+      alt="Alexov Shop"
+      width="1400"
+      height="295"
+      fetchpriority="high"
+      class="h-6 sm:h-7 w-auto object-contain mb-3"
+    />
+
+    <!-- Індикатор завантаження -->
+    <div class="w-40 h-1 rounded-full bg-white/10 overflow-hidden mb-2.5">
+      <div class="splash-progress-bar h-full w-1/2 rounded-full bg-white"></div>
+    </div>
+
+    <span
+      data-i18n="splash.loading"
+      class="font-mono text-[10px] uppercase tracking-[0.18em] text-white/60"
+    >
+      Завантаження...
+    </span>
+  </div>
+</div>
+
+<script is:inline>
+  // Гарантований плавний вхід в інтерфейс навіть при повільній мережі
+  (function () {
+    function hideSplash() {
+      var splash = document.getElementById('splash-screen');
+      var headerLogo = document.querySelector('[data-header-logo]');
+      if (headerLogo) {
+        headerLogo.classList.remove('opacity-0');
+        headerLogo.classList.add('opacity-100');
+      }
+      if (splash && !splash.classList.contains('is-hidden')) {
+        splash.classList.add('is-hidden');
+        setTimeout(function () {
+          splash.style.display = 'none';
+        }, 450);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(hideSplash, 650);
+    });
+    setTimeout(hideSplash, 1600);
+  })();
+</script>

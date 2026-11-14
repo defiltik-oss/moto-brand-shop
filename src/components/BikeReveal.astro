@@ -1,0 +1,112 @@
+---
+/**
+ * BikeReveal – interactive 3D bike showcase (Three.js, see scripts/bikes.ts + bikeViewer.ts).
+ *
+ *  ≥768px  : pinned scene. The headline splits, a window opens full-bleed, and each bike
+ *            slides in and spins 360° as you scroll (GSAP ScrollTrigger).
+ *  <768px  : NO pinning (no dead scroll space). Two compact glass cards stacked vertically;
+ *            each bike rotates while its card scrolls through the viewport, and can be
+ *            dragged sideways with a finger.
+ *
+ * Models are strictly lazy-loaded via IntersectionObserver and queued sequentially
+ * so initial page load stays at a locked 60 FPS.
+ */
+const bikes = [
+  { id: 'bike1', folder: '/models/bike1', name: 'KTM Dirt Bike', type: 'Модель 01' },
+  { id: 'bike2', folder: '/models/bike2', name: '2-Stroke Dirt Bike', type: 'Модель 02' },
+];
+---
+
+<div id="bikes">
+  <!-- ======================= DESKTOP: pinned scroll scene ======================= -->
+  <section data-bikes-desktop class="relative hidden h-[100svh] overflow-hidden md:block">
+    <div class="pointer-events-none absolute inset-x-0 top-[15svh] z-20 px-6 text-center">
+      <p data-bikes-label class="glass mx-auto mb-5 inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.26em] text-accent uppercase">
+        Електротранспорт
+      </p>
+      <h2 class="flex flex-wrap justify-center gap-x-[0.28em] text-[clamp(2.5rem,7.5vw,7.5rem)] leading-[1.03] font-semibold tracking-[-0.045em] uppercase">
+        <span data-split="l" class="inline-block">Швидкість</span>
+        <span data-split="r" class="inline-block">без звуку.</span>
+      </h2>
+    </div>
+
+    <!-- The window (clip-path opens on scroll; background adapts to Light / Dark theme) -->
+    <div data-bikes-window class="bikes-window bike-stage-bg absolute inset-0 z-10 overflow-hidden">
+      <div data-bikes-inner class="absolute inset-0 will-change-transform">
+        <div class="bike-stage-grad absolute inset-0 opacity-90"></div>
+        <div data-depth class="bike-stage-glow absolute top-[-10%] left-[5vw] h-[90svh] w-[90vw] rounded-full"></div>
+        <div class="bike-stage-fade absolute inset-x-0 bottom-0 h-[16svh]"></div>
+
+        <!-- One WebGL canvas per bike, stacked. Pointer-events off so the page stays interactive. -->
+        {bikes.map((b) => <canvas data-bike-canvas={b.id} data-folder={b.folder} class="pointer-events-none absolute inset-0 h-full w-full"></canvas>)}
+      </div>
+
+      <!-- Lightweight Liquid Glass skeleton/spinner placeholder while models lazy-load -->
+      <div data-bikes-loader class="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center gap-4">
+        <div class="glass liquid-loader" role="status" aria-label="Завантаження 3D моделей">
+          <span class="liquid-ring"></span><span class="liquid-blob"></span>
+        </div>
+        <span class="glass rounded-full px-4 py-1.5 text-[10px] font-semibold tracking-[0.24em] text-fg/70 uppercase">
+          Завантаження 3D...
+        </span>
+      </div>
+
+      <!-- Glass captions (theme-aware text colors) -->
+      {
+        bikes.map((b) => (
+          <div data-bike-chip={b.id} class="glass absolute bottom-[5svh] left-1/2 z-20 rounded-full px-7 py-3.5 text-center text-fg opacity-0">
+            <p class="text-[10px] font-semibold tracking-[0.28em] text-accent uppercase">{b.type}</p>
+            <p class="mt-1 text-sm font-semibold tracking-tight md:text-base">{b.name}</p>
+          </div>
+        ))
+      }
+      <p data-bikes-error class="glass absolute bottom-[5svh] left-1/2 z-30 hidden -translate-x-1/2 rounded-full px-6 py-3 text-xs text-fg/80">
+        3D недоступно на цьому пристрої
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= MOBILE: compact vertical cards ======================= -->
+  <section data-bikes-mobile class="px-6 py-16 md:hidden">
+    <div class="mx-auto max-w-[1400px]">
+      <div data-reveal class="mb-8">
+        <p class="glass mb-4 inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.26em] text-accent uppercase">
+          Електротранспорт
+        </p>
+        <h2 class="text-[clamp(2.2rem,10vw,3.2rem)] leading-[1.03] font-semibold tracking-[-0.045em] uppercase">
+          Швидкість<br />без звуку.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {
+          bikes.map((b) => (
+            <article class="glass flex flex-col rounded-3xl p-2.5">
+              <div data-bike-card={b.id} class="bike-stage-bg relative aspect-[5/4] w-full overflow-hidden rounded-[1.25rem]">
+                <div class="bike-stage-grad absolute inset-0 opacity-90"></div>
+                <div class="bike-stage-glow absolute inset-0"></div>
+                <canvas data-bike-canvas={b.id} data-folder={b.folder} class="absolute inset-0 block h-full w-full touch-pan-y"></canvas>
+                <div data-card-loader class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <div class="glass liquid-loader" role="status" aria-label="Завантаження 3D моделі">
+                    <span class="liquid-ring"></span><span class="liquid-blob"></span>
+                  </div>
+                  <span class="glass rounded-full px-3.5 py-1 text-[9px] font-semibold tracking-[0.22em] text-fg/70 uppercase">
+                    3D Модель
+                  </span>
+                </div>
+                <p data-card-error class="absolute inset-x-0 bottom-3 hidden text-center text-[11px] text-fg/60">3D недоступно</p>
+              </div>
+              <div class="flex items-center justify-between px-3 pt-4 pb-2.5">
+                <div>
+                  <p class="text-[10px] font-semibold tracking-[0.25em] text-accent uppercase">{b.type}</p>
+                  <h3 class="mt-1 text-base font-semibold tracking-tight">{b.name}</h3>
+                </div>
+                <span class="text-[10px] tracking-[0.2em] text-fg/45 uppercase">↔ крути</span>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</div>

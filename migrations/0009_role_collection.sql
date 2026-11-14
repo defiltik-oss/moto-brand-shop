@@ -1,0 +1,22 @@
+-- Extend the catalogue without changing existing ownership or prices.
+INSERT OR IGNORE INTO shop_roles(id,name,price,description) VALUES
+('role-urban','URBAN',200,'URBAN collection'),
+('role-commuter','COMMUTER',500,'COMMUTER collection'),
+('role-pulse','PULSE',800,'PULSE collection'),
+('role-neon','NEON',1100,'NEON collection'),
+('role-circuit','CIRCUIT',1400,'CIRCUIT collection'),
+('role-drift','DRIFT',1700,'DRIFT collection'),
+('role-horizon','HORIZON',2000,'HORIZON collection'),
+('role-nomad','NOMAD',2300,'NOMAD collection'),
+('role-phantom','PHANTOM',2600,'PHANTOM collection'),
+('role-chrome','CHROME',2900,'CHROME collection'),
+('role-silver','SILVER',3200,'SILVER collection'),
+('role-gold','GOLD',3500,'GOLD collection'),
+('role-platinum','PLATINUM',3800,'PLATINUM collection'),
+('role-prism','PRISM',4100,'PRISM collection'),
+('role-aurora','AURORA',4400,'AURORA collection'),
+('role-spectrum','SPECTRUM',4700,'SPECTRUM collection'),
+('role-rgb','RGB',5000,'RGB collection'),
+('role-diamond','DIAMOND',5300,'DIAMOND collection'),
+('role-cosmic','COSMIC',5600,'COSMIC collection'),
+('role-sovereign','SOVEREIGN',5900,'SOVEREIGN collection');

@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+
+.vercel
+
+/.git-export-*/
+/.wrangler/
+.env*
+.dev.vars*
+/public/_astro/
+/public/index.html

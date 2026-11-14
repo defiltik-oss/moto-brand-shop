@@ -1,0 +1,11 @@
+Model Information:
+* title:	Realistic KTM Dirt Bike v2 (Game Ready Low Poly)
+* source:	https://sketchfab.com/3d-models/realistic-ktm-dirt-bike-v2-game-ready-low-poly-4b513038dad44d4e814010f1b0424b33
+* author:	Octane (https://sketchfab.com/OCTbuilds)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Realistic KTM Dirt Bike v2 (Game Ready Low Poly)" (https://sketchfab.com/3d-models/realistic-ktm-dirt-bike-v2-game-ready-low-poly-4b513038dad44d4e814010f1b0424b33) by Octane (https://sketchfab.com/OCTbuilds) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

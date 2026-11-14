@@ -1,0 +1,153 @@
+---
+/**
+ * MaintenanceScreen — Захисний екран «Технічні роботи» (Technical Maintenance).
+ * Блокує доступ до сайту для всіх користувачів, окрім адміністратора (за Telegram ID).
+ */
+---
+
+<section
+  id="maintenance-screen"
+  aria-label="Технічні роботи"
+  class="fixed inset-0 z-[95] hidden flex-col justify-between overflow-y-auto bg-[#030304] text-white select-none p-4 sm:p-8"
+>
+  <!-- Атмосферний фоновий шар у стилі Vercel + Apple -->
+  <div class="pointer-events-none fixed inset-0 overflow-hidden z-0" aria-hidden="true">
+    <img
+      src="/shtorm_1.jpg"
+      alt=""
+      class="w-full h-full object-cover object-center opacity-[0.12] scale-105 blur-[2px]"
+    />
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at 50% 35%, rgba(12, 16, 26, 0.55) 0%, rgba(2, 2, 4, 0.94) 65%, #000000 100%);"
+    ></div>
+  </div>
+
+  <!-- Верхній рядок: Логотип та перемикач мови UA / EN -->
+  <div class="relative z-10 mx-auto flex w-full max-w-[960px] items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <img
+        src="/logo.png"
+        alt="Alexov Shop"
+        width="1400"
+        height="295"
+        class="h-5 sm:h-6 w-auto object-contain"
+      />
+    </div>
+
+    <div
+      class="glass-sub flex h-8 items-center rounded-xl p-0.5 text-[11px] font-mono font-semibold"
+      role="group"
+      aria-label="Вибір мови"
+    >
+      <button
+        type="button"
+        data-lang-btn="uk"
+        class="header-lang-btn active cursor-pointer rounded-lg px-2.5 py-1 transition-all"
+      >
+        UA
+      </button>
+      <button
+        type="button"
+        data-lang-btn="en"
+        class="header-lang-btn cursor-pointer rounded-lg px-2.5 py-1 transition-all"
+      >
+        EN
+      </button>
+    </div>
+  </div>
+
+  <!-- Центральна скляна плашка «Технічні роботи. Скоро повернемося» -->
+  <div class="relative z-10 my-auto mx-auto w-full max-w-[500px] py-6">
+    <div class="liquid-glass-elevated rounded-3xl p-6 sm:p-9 text-center border border-white/12 shadow-2xl">
+      <!-- Іконка-індикатор у скляній рамці -->
+      <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl liquid-pill border border-white/15 shadow-lg">
+        <svg class="h-7 w-7 text-sky-400 animate-pulse" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"></path>
+        </svg>
+      </div>
+
+      <!-- Технічний бейдж -->
+      <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-4 liquid-pill border border-amber-400/25">
+        <span class="h-2 w-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-300" data-i18n="maintenance.badge">
+          SYSTEM MAINTENANCE • ТЕХНІЧНЕ ОНОВЛЕННЯ
+        </span>
+      </div>
+
+      <!-- Головний заголовок -->
+      <h1
+        class="text-[22px] sm:text-[26px] font-bold tracking-[-0.03em] text-white leading-tight mb-3"
+        data-i18n="maintenance.title"
+      >
+        Технічні роботи. Скоро повернемося
+      </h1>
+
+      <!-- Підзаголовок -->
+      <p
+        class="text-[13px] sm:text-[14px] leading-relaxed text-zinc-400 mb-6"
+        data-i18n="maintenance.subtitle"
+      >
+        Ми оновлюємо інфраструктуру магазину, систему профілів та нові колекції Alexov Shop. Доступ тимчасово відкритий лише для адміністратора.
+      </p>
+
+      <!-- Інформаційна плашка статусу та поточного ID -->
+      <div class="liquid-pill rounded-2xl p-3.5 mb-6 flex items-center justify-between gap-3 text-left">
+        <div class="min-w-0">
+          <span class="font-mono text-[9.5px] uppercase tracking-[0.12em] block text-zinc-400" data-i18n="maintenance.statusLabel">
+            СТАТУС СИСТЕМИ
+          </span>
+          <span class="text-[12.5px] font-semibold text-white block truncate" data-i18n="maintenance.statusVal">
+            Оновлення серверів
+          </span>
+        </div>
+        <div class="text-right shrink-0">
+          <span class="font-mono text-[9.5px] uppercase tracking-[0.1em] block text-zinc-400">TELEGRAM ID</span>
+          <span id="maintenance-user-id" class="font-mono text-[11.5px] font-semibold text-sky-400 block">
+            GUEST
+          </span>
+        </div>
+      </div>
+
+      <!-- Кнопки зв'язку та повторної перевірки доступу -->
+      <div class="space-y-2.5">
+        <a
+          href="https://t.me/Alexov_Street_Team"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary w-full h-11 rounded-xl text-[13px] font-semibold flex items-center justify-center gap-2"
+        >
+          <span data-i18n="maintenance.channelBtn">Офіційний Telegram-канал</span>
+          <span>↗</span>
+        </a>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <a
+            href="https://t.me/Alexov_Manager"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary h-10 rounded-xl text-[12px] font-medium flex items-center justify-center px-3"
+            data-i18n="maintenance.managerBtn"
+          >
+            Зв'язок з @Alexov_Manager
+          </a>
+          <button
+            id="maintenance-recheck-btn"
+            type="button"
+            class="btn-secondary h-10 rounded-xl text-[12px] font-medium flex items-center justify-center px-3 cursor-pointer"
+            data-i18n="maintenance.recheckBtn"
+          >
+            Перевірити доступ Telegram ID
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Нижній копірайт -->
+  <div class="relative z-10 mx-auto w-full max-w-[960px] text-center">
+    <p class="font-mono text-[10.5px] tracking-[0.08em] text-zinc-500">
+      ALEXOV SHOP • PROTECTED ADMIN GATEWAY
+    </p>
+  </div>
+</section>

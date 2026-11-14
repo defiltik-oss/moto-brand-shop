@@ -1,0 +1,99 @@
+<div id="navigation-drawer" class="navigation-drawer glass-modal interface-drawer" data-open="false" inert aria-labelledby="navigation-title" role="group">
+  <header class="navigation-header">
+    <h2 id="navigation-title" data-i18n="nav.menu">Меню</h2>
+    <button type="button" class="navigation-close modal-top-close liquid-pill flex shrink-0 cursor-pointer items-center justify-center text-muted transition-colors hover:text-fg" data-navigation-close aria-label="Закрити меню" data-i18n-aria="nav.closeMenu">
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </header>
+
+  <div class="navigation-links">
+    <button type="button" id="navigation-leaderboard-btn" class="liquid-pill interface-tile" aria-haspopup="dialog">
+      <span data-i18n="jet.tabLeaderboard">Рейтинг</span>
+      <svg class="navigation-trophy" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16m-8-7v7M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+      </svg>
+    </button>
+    <button type="button" id="navigation-wallet-btn" class="liquid-pill interface-tile" aria-haspopup="dialog" data-i18n="jet.walletTitle">Баланс JET</button>
+    <button type="button" id="navigation-role-shop-btn" class="liquid-pill interface-tile" aria-haspopup="dialog" data-i18n="nav.roleShop">Магазин ролей</button>
+  </div>
+</div>
+
+<style>
+  .navigation-drawer {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    z-index: 60;
+    width: min(380px, 100%);
+    height: 100dvh;
+    max-height: 100dvh;
+    padding-top: var(--site-safe-top);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    color: var(--c-fg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: opacity 200ms ease, transform 300ms ease-out, visibility 300ms;
+  }
+
+  .navigation-drawer[data-open='true'] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .navigation-header {
+    display: flex;
+    flex: none;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--c-divider);
+  }
+
+  h2 { font-size: 1rem; font-weight: 700; }
+
+  .navigation-close {
+    border-radius: 50%;
+  }
+
+  .navigation-links {
+    display: grid;
+    gap: .75rem;
+    padding: 1.5rem;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .navigation-links button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    min-height: 3rem;
+    padding: .8rem 1rem;
+    border-radius: 1rem;
+    text-align: start;
+    font-weight: 550;
+    cursor: pointer;
+  }
+
+  .navigation-links button:hover {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  button:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+  .navigation-trophy { flex: none; color: #a76c00; }
+  :global(html:not([data-theme='light'])) .navigation-trophy { color: #fbbf24; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navigation-drawer { transition: none; }
+  }
+</style>

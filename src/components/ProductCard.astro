@@ -1,0 +1,222 @@
+---
+/**
+ * ProductCard — Картка товару каталогу Alexov Shop (Liquid Glass 2.0 з акуратною рамкою):
+ * 1. «Щиток на самокат Vinnytsia Stunt Team» (чорний, в наявності)
+ * 2. «Зіпка Alexov Street Team» (Статус «Скоро в продажу», перемикання спереду/ззаду)
+ * 3. «Фірмовий стікерпак» (Статус «Немає в наявності»)
+ */
+import type { ProductItem } from '../data/products';
+
+interface Props {
+  product: ProductItem;
+}
+
+const { product } = Astro.props;
+const isOutOfStock = product.statusType === 'out_of_stock';
+const isComingSoon = product.statusType === 'coming_soon';
+const hasMultipleImages = Boolean(product.secondaryImage);
+const hasColorVariants = Boolean(product.colorVariants && product.colorVariants.length > 0);
+---
+
+<article
+  data-reveal
+  data-product-card
+  data-product-admin-host
+  data-catalog-status={product.statusType}
+  data-product-id={product.id}
+  data-selected-color={hasColorVariants ? product.colorVariants![0].id : ''}
+  class:list={[
+    'glass catalog-product flex flex-col rounded-2xl p-5 sm:p-7 transition-all duration-300 box-border max-w-full overflow-hidden',
+    isOutOfStock
+      ? 'opacity-70 grayscale-[0.75] contrast-[0.94] hover:opacity-85 select-none'
+      : 'glass-lift',
+  ]}
+>
+  <div>
+    <!-- Шапка картки: Категорія + Статус -->
+    <div
+      class="flex items-center justify-between gap-2 pb-4"
+      style="box-shadow: inset 0 -1px 0 0 var(--c-divider);"
+    >
+      <p
+        data-i18n={`product.${product.id}.category`}
+        class="tech-badge min-w-0 truncate"
+      >
+        {product.categoryUk}
+      </p>
+
+      {isComingSoon && (
+        <span class="glass-sub inline-flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium text-fg whitespace-nowrap">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+          <span data-i18n="catalog.comingSoon">Скоро в продажу</span>
+        </span>
+      )}
+
+      {isOutOfStock && (
+        <span class="glass-sub inline-flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium text-muted whitespace-nowrap">
+          <span class="h-1.5 w-1.5 rounded-full bg-muted"></span>
+          <span data-i18n="catalog.outOfStock">Немає в наявності</span>
+        </span>
+      )}
+
+      {!isComingSoon && !isOutOfStock && (
+        <span class="glass-sub inline-flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium text-emerald-400 whitespace-nowrap border border-emerald-500/20">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          <span data-i18n="catalog.inStock">В наявності</span>
+        </span>
+      )}
+    </div>
+
+    <!-- Галерея товару -->
+    <div
+      data-product-gallery
+      class="glass-sub group relative my-5 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-xl p-4"
+    >
+      <img
+        data-gallery-img="front"
+        src={product.image}
+        alt={product.titleUk}
+          loading="eager"
+          fetchpriority={product.id === 'scooter-shield-vst' ? 'high' : undefined}
+        decoding="async"
+        class:list={[
+          'h-full w-full object-contain transition-all duration-300',
+          isOutOfStock && 'filter grayscale contrast-75 opacity-75',
+          (hasMultipleImages || hasColorVariants) && 'cursor-pointer group-hover:scale-[1.02]',
+        ]}
+      />
+
+      {/* Варіант А: Перемикач ракурсів Спереду / Ззаду (тільки для одягу з secondaryImage) */}
+      {hasMultipleImages && (
+        <>
+          <img
+            data-gallery-img="back"
+            src={product.secondaryImage}
+            alt={`${product.titleUk} (вигляд ззаду)`}
+            loading="lazy"
+            decoding="async"
+            class="pointer-events-none absolute inset-0 h-full w-full object-contain p-4 opacity-0 transition-opacity duration-300 cursor-pointer"
+          />
+
+          <!-- Перемикач ракурсів: Спереду / Ззаду -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-lg bg-black/80 p-1 z-10 border border-white/10">
+            <button
+              type="button"
+              data-gallery-btn="front"
+              aria-label="Вигляд спереду"
+              class="cursor-pointer rounded-md px-3 py-1 text-[10.5px] font-medium transition-all bg-accent text-white shadow-sm"
+            >
+              <span data-i18n="catalog.viewFront">Спереду</span>
+            </button>
+            <button
+              type="button"
+              data-gallery-btn="back"
+              aria-label="Вигляд ззаду"
+              class="cursor-pointer rounded-md px-3 py-1 text-[10.5px] font-medium transition-all text-muted hover:text-white"
+            >
+              <span data-i18n="catalog.viewBack">Ззаду</span>
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* Варіант Б: Перемикач кольорів (наприклад Білий / Чорний) */}
+      {hasColorVariants && (
+        <div class="liquid-pill absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-xl bg-black/85 p-1 z-10 border border-white/10 shadow-lg">
+          {product.colorVariants!.map((c, idx) => (
+            <button
+              type="button"
+              data-color-btn={c.id}
+              data-img-src={c.image}
+              data-color-name={c.nameUk}
+              aria-label={c.nameUk}
+              class:list={[
+                'color-variant-btn cursor-pointer rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-all flex items-center gap-1.5',
+                idx === 0 ? 'bg-white/20 text-white shadow-sm ring-1 ring-white/30' : 'text-muted hover:text-white',
+              ]}
+            >
+              <span
+                class="w-2.5 h-2.5 rounded-full border border-white/20 shrink-0"
+                style={`background-color: ${c.colorCode || '#fff'};`}
+              ></span>
+              <span>{c.nameUk}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Назва та опис -->
+    <div>
+      <h3
+        data-i18n={`product.${product.id}.title`}
+        class="text-xl font-semibold tracking-tight text-fg sm:text-2xl"
+      >
+        {product.titleUk}
+      </h3>
+
+      <p
+        data-i18n={`product.${product.id}.desc`}
+        class="mt-2 text-xs leading-relaxed text-muted sm:text-sm"
+      >
+        {product.descriptionUk}
+      </p>
+    </div>
+  </div>
+
+  <!-- Нижня панель картки: Ціна та кнопка -->
+  <div class="product-card-bottom flex flex-col pt-6">
+  <div
+    class="product-card-footer flex items-center justify-between gap-3 pt-4 box-border w-full max-w-full min-w-0"
+    style="box-shadow: inset 0 1px 0 0 var(--c-divider);"
+  >
+    <div class="shrink-0 min-w-0">
+      {product.price ? (
+        <div class="flex items-baseline">
+          <span class:list={['font-mono text-xl font-semibold tabular-nums sm:text-2xl', isOutOfStock ? 'text-muted' : 'text-fg']}>
+            {product.price}
+          </span>
+          <span data-i18n="catalog.currency" class="ml-1.5 text-xs text-muted">
+            грн
+          </span>
+        </div>
+      ) : (
+        <span data-i18n="catalog.priceSoon" class="text-xs font-medium text-muted select-none">
+          Ціна скоро
+        </span>
+      )}
+    </div>
+
+    {product.buttonAction === 'order' ? (
+      <button
+        type="button"
+        data-open-order
+        data-product-id={product.id}
+        class="open-order-modal-btn btn-primary m-0 inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold sm:px-5 sm:py-2.5 shadow-lg shadow-sky-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+      >
+        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span data-i18n={`product.${product.id}.btnText`} class="truncate">
+          {product.buttonTextUk}
+        </span>
+      </button>
+    ) : (
+      <button
+        type="button"
+        disabled
+        aria-disabled="true"
+        class:list={[
+          'glass-sub m-0 inline-flex shrink-0 cursor-not-allowed select-none items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-xs font-medium sm:px-4 sm:py-2.5 pointer-events-none max-w-full box-border whitespace-nowrap',
+          isComingSoon ? 'text-fg/90' : 'text-muted/65',
+        ]}
+      >
+        {isComingSoon && <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>}
+        <span data-i18n={isComingSoon ? 'catalog.comingSoon' : 'catalog.outOfStockBtn'} class="truncate">
+          {isComingSoon ? 'Скоро в продажу' : 'Немає в наявності'}
+        </span>
+      </button>
+    )}
+  </div>
+  </div>
+</article>

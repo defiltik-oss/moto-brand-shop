@@ -1,0 +1,293 @@
+---
+import JetModal from "./JetModal.astro";
+/**
+ * ProfileModal — Модальне вікно особистого кабінету райдера Alexov Shop (Telegram WebApp Auth + Гейміфікація).
+ * - Велика аватарка суворо по центру у красивій скляній рамці.
+ * - Ім'я в один рядок з ефектом нескінченного рухомого рядка (marquee), якщо воно довге (ніколи не обрізається).
+ * - Під ім'ям: @username та моноширинний ID: xxxxxxxx.
+ * - Точний лічильник часу в проєкті: «У проєкті: X днів, Y годин».
+ */
+---
+
+<div
+  id="profile-modal"
+  class="profile-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 opacity-0 pointer-events-none transition-opacity duration-200"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="profile-modal-title"
+  aria-hidden="true"
+  inert
+>
+  <div
+    id="profile-modal-panel"
+    class="profile-panel glass-modal interface-drawer w-full"
+  >
+    <!-- Header -->
+    <div class="profile-panel-header">
+      <button id="profile-jet-back-btn" type="button" class="profile-back liquid-pill hidden">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"></path>
+        </svg>
+        <span data-i18n="jet.walletBack">Назад</span>
+      </button>
+      <div class="min-w-0">
+        <span id="profile-modal-tag" class="font-mono text-[10px] uppercase tracking-[0.14em] block mb-1 text-muted" data-i18n="auth.modalTag">
+          ОСОБИСТИЙ КАБІНЕТ • TELEGRAM ID
+        </span>
+        <h3 id="profile-modal-title" class="text-[18px] font-semibold tracking-[-0.02em] text-fg" data-i18n="auth.modalTitle">
+          Профіль райдера
+        </h3>
+        <h3 id="profile-wallet-title" class="hidden text-[18px] font-semibold tracking-[-0.02em] text-fg" data-i18n="jet.walletTitle">
+          Баланс JET
+        </h3>
+      </div>
+      <button
+        id="close-profile-modal-btn"
+        type="button"
+        class="profile-close w-8 h-8 rounded-lg liquid-pill flex items-center justify-center transition-colors cursor-pointer shrink-0 text-muted hover:text-fg"
+        aria-label="Закрити вікно профілю"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="profile-modal-scroll" class="profile-panel-scroll">
+      <div id="profile-overview">
+        <!-- STATE A: Authenticated User Profile View -->
+        <div id="profile-modal-authed" class="hidden space-y-5">
+          <!-- Центральна картка профілю з великою аватаркою в скляній рамці -->
+          <div class="liquid-pill rounded-2xl px-4 py-6 flex flex-col items-center text-center relative overflow-hidden">
+            <!-- Бейдж верифікації зверху по центру -->
+            <div class="mb-4">
+              <span
+                id="modal-user-auth-badge"
+                class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/12 border border-emerald-400/30 font-mono text-[10px] font-semibold text-emerald-300"
+                data-i18n="auth.verified"
+              >
+                Telegram Верифіковано
+              </span>
+            </div>
+
+            <!-- Велика аватарка суворо по центру у багатошаровій скляній рамці -->
+            <div class="relative mx-auto mb-4">
+              <div id="profile-avatar-frame" class="avatar-glass-frame liquid-glass w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1.5 flex items-center justify-center">
+                <div class="w-full h-full rounded-full p-[1.5px] bg-gradient-to-tr from-sky-400/70 via-white/50 to-emerald-400/70 overflow-hidden flex items-center justify-center">
+                  <div class="w-full h-full rounded-full overflow-hidden bg-zinc-950 flex items-center justify-center">
+                    <img
+                      id="modal-user-avatar"
+                      src=""
+                      alt="Avatar"
+                      class="w-full h-full object-cover hidden"
+                    />
+                    <span id="modal-user-initials" class="font-mono text-2xl sm:text-3xl font-bold text-white select-none">
+                      AX
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Індикатор активності -->
+              <span
+                class="absolute bottom-1.5 right-1.5 w-4 h-4 rounded-full bg-emerald-400 ring-[3px] ring-black shadow-md"
+                aria-hidden="true"
+              ></span>
+            </div>
+
+            <!-- Ім'я користувача в один рядок (з ефектом нескінченного плавного скролу marquee, якщо воно довге) -->
+            <div id="modal-name-viewport" class="w-full max-w-[320px] mx-auto overflow-hidden py-0.5 mb-1.5">
+              <!-- Статичний варіант для короткого імені -->
+              <h4
+                id="modal-user-name"
+                class="text-[19px] sm:text-[21px] font-bold tracking-[-0.02em] text-fg whitespace-nowrap text-center"
+              >
+                Rider
+              </h4>
+
+              <!-- Нескінченний рухомий рядок (Marquee) для довгого імені — ніколи не обрізається -->
+              <div id="modal-name-marquee-wrap" class="profile-marquee-mask hidden w-full overflow-hidden">
+                <div class="profile-marquee-track flex items-center whitespace-nowrap w-max">
+                  <span id="modal-user-name-marquee-1" class="text-[19px] sm:text-[21px] font-bold tracking-[-0.02em] text-fg pr-8">
+                    Rider
+                  </span>
+                  <span class="text-sky-400/70 font-mono text-xs pr-8" aria-hidden="true">✦</span>
+                  <span id="modal-user-name-marquee-2" class="text-[19px] sm:text-[21px] font-bold tracking-[-0.02em] text-fg pr-8" aria-hidden="true">
+                    Rider
+                  </span>
+                  <span class="text-sky-400/70 font-mono text-xs pr-8" aria-hidden="true">✦</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Під ім'ям: @username та моноширинний ID: xxxxxxxx -->
+            <div class="flex flex-col items-center gap-1 mt-0.5">
+              <p id="modal-user-handle" class="font-mono text-[13px] font-medium text-sky-400">
+                @username
+              </p>
+              <div id="modal-active-shop-role" aria-live="polite"></div>
+              <details id="profile-founder-medal" class="founder-medal" hidden>
+                <summary class="liquid-pill px-2.5 py-1 text-xs">🏅 Top-50</summary>
+                <p class="glass-sub mt-2 max-w-[220px] rounded-xl p-3 text-xs">Ексклюзивна відзнака одного з перших 50 учасників Alexov Shop.</p>
+              </details>
+              <p
+                id="modal-user-id"
+                class="font-mono text-[11.5px] tracking-[0.04em] px-2.5 py-0.5 rounded-md bg-white/[0.04] border border-white/10 text-muted"
+              >
+                ID: —
+              </p>
+            </div>
+
+            <!-- Discord-стиль ролей та тегів під ім'ям та ID -->
+            <div
+              id="modal-user-roles"
+              class="mt-3 flex flex-wrap items-center justify-center gap-1.5 max-w-[360px]"
+            >
+              <!-- Динамічні Discord-плашки рендеряться у main.ts -->
+            </div>
+
+            <!-- Точний лічильник часу в проєкті: «У проєкті: X днів, Y годин» -->
+            <select id="profile-role-select" aria-label="Активна роль" class="glass-sub mt-3 max-w-full rounded-lg p-2 text-sm" hidden></select>
+            <p id="profile-role-status" role="status" class="text-xs text-muted"></p>
+            <div class="mt-3 inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 liquid-glass border border-white/12">
+              <svg class="w-3.5 h-3.5 text-sky-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"></path>
+              </svg>
+              <span id="modal-user-tenure" class="font-mono text-[11.5px] font-semibold text-fg/95">
+                У проєкті: 0 днів, 1 годин
+              </span>
+            </div>
+          </div>
+
+          <!-- Gamification & Wallet Grid -->
+          <div class="grid grid-cols-2 gap-3">
+            <!-- Internal Currency (Tokens) — інтерактивна кнопка переходу до модалу JET -->
+            <button
+              type="button"
+              id="profile-open-jet-btn"
+              aria-controls="profile-jet"
+              aria-expanded="false"
+              class="liquid-pill rounded-xl p-3.5 min-w-0 overflow-hidden text-left cursor-pointer transition-all hover:border-sky-400/50 hover:bg-white/[0.06] group"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-muted group-hover:text-sky-300 transition-colors" data-i18n="auth.tokensLabel">
+                  Баланс жетонів
+                </span>
+                <svg class="w-3.5 h-3.5 text-muted group-hover:text-sky-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+              <div class="flex items-baseline gap-1.5">
+                <span id="modal-user-tokens" class="font-mono text-[20px] font-bold text-fg">100</span>
+                <span class="font-mono text-[11px] font-semibold text-sky-400">JET</span>
+              </div>
+              <span class="text-[11px] text-muted block mt-0.5 truncate group-hover:text-fg/80 transition-colors" data-i18n="auth.tokensSub">
+                Внутрішня валюта Alexov
+              </span>
+            </button>
+
+            <!-- Rider Level & XP -->
+            <div class="liquid-pill rounded-xl p-3.5 min-w-0 overflow-hidden">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] block text-muted mb-1" data-i18n="auth.levelLabel">
+                Рівень та досвід
+              </span>
+              <div class="flex items-baseline gap-1.5">
+                <span id="modal-user-level" class="font-mono text-[17px] font-bold text-fg" data-i18n="auth.levelVal">LVL 1 · 50 XP</span>
+              </div>
+              <span id="modal-user-rank" class="text-[11px] text-muted block mt-0.5 truncate" data-i18n="auth.levelSub">
+                Райдер Alexov
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Rewards & Badges Section -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-muted" data-i18n="auth.rewardsLabel">
+                Нагороди та досягнення
+              </span>
+              <span id="modal-rewards-count" class="font-mono text-[10px] font-bold px-2 py-0.5 rounded-md bg-sky-500/15 text-sky-400 border border-sky-400/25">
+                1 / 31
+              </span>
+            </div>
+            <div id="modal-user-rewards" class="space-y-2 max-h-[210px] overflow-y-auto pr-1">
+              <!-- Динамічно рендеряться всі видані ачівки користувача -->
+            </div>
+            <p class="text-[11px] text-muted mt-2.5 leading-relaxed" data-i18n="auth.gamificationNote">
+              Система завдань, нарахування жетонів та обміну на мерч готується до запуску.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- STATE B: Guest / Sign-In View (Strictly Telegram WebApp Auth) -->
+        <div id="profile-modal-guest" class="space-y-4">
+          <div class="liquid-pill rounded-2xl p-4">
+            <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-sky-400 mb-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+              <span data-i18n="auth.guestBadge">АВТОРИЗАЦІЯ TELEGRAM WEBAPP</span>
+            </span>
+            <h4 class="text-[15px] font-semibold text-fg mb-1" data-i18n="auth.guestTitle">
+              Вхід через офіційний Telegram Mini App
+            </h4>
+            <p class="text-[12.5px] leading-relaxed text-muted mb-3.5" data-i18n="auth.guestDesc">
+              Ваш профіль, баланс монеток JET, ролі та досягнення зберігаються виключно на захищеному сервері та синхронізуються автоматично при вході через Telegram-бота Alexov Shop.
+            </p>
+            <button
+              id="modal-fast-tg-login-btn"
+              type="button"
+              class="btn-primary w-full h-10 rounded-xl text-[12.5px] font-semibold flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+              <span data-i18n="auth.guestTgFastBtn">Авторизуватися через Telegram</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <JetModal />
+    </div>
+  </div>
+</div>
+
+<style>
+  .avatar-glass-frame {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(56, 189, 248, 0.14) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow:
+      0 14px 36px -8px rgba(0, 0, 0, 0.65),
+      inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+
+  }
+
+  .profile-marquee-mask {
+    mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
+
+  .profile-marquee-track {
+    animation: profile-name-marquee 9s linear infinite;
+  }
+
+  .profile-marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes profile-name-marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

@@ -1,0 +1,92 @@
+---
+/**
+ * Базова HTML-оболонка — ALEXOV SHOP (Vercel + Apple HIG + Liquid Glass 2.0)
+ * - Суцільний атмосферний фотофон реальної техніки (Shtorm Series) без стиків та артефактів обрізки.
+ * - Українська мова за замовчуванням (lang="uk") з підтримкою миттєвого перемикання UK / RU / EN.
+ * - Чисте скло Liquid Glass 2.0 з акуратними тонкими рамками.
+ */
+import '../styles/global.css';
+import { PRODUCTS } from '../data/products';
+
+const shieldImage = PRODUCTS.find(product => product.id === 'scooter-shield-vst')?.image;
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Офіційний магазин лімітованого мерчу та лабораторія кастомного тюнінгу електротранспорту Alexov Shop.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="uk" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    {shieldImage && <link rel="preload" as="image" href={shieldImage} fetchpriority="high" />}
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="uk_UA" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000000'/><path d='M16 6 26 24H6L16 6Z' fill='%23ffffff'/></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Офіційний SDK Telegram WebApp (initData та профіль користувача) -->
+    <script is:inline src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Ініціалізація теми, мови (Українська за замовчуванням) та режиму Liquid Glass 2.0 -->
+    <script is:inline>
+      try {
+        var savedTheme = localStorage.getItem('alexov_theme_v5');
+        var theme = savedTheme === 'light' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', theme === 'light' ? '#f4f5f8' : '#000000');
+
+        var savedLang = localStorage.getItem('alexov_lang_v6');
+        var lang = savedLang === 'en' ? 'en' : 'uk';
+        document.documentElement.lang = lang;
+
+        var savedPerf = localStorage.getItem('alexov_perf_mode_v5');
+        var perfEnabled = savedPerf !== '0' && savedPerf !== 'false';
+        document.documentElement.classList.toggle('performance-mode', perfEnabled);
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="relative min-h-dvh selection:bg-white selection:text-black">
+    <!-- Суцільний кінематографічний фотофон реальної техніки (Shtorm Series) без стиків -->
+    <div aria-hidden="true" class="ambient-scene pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="shtorm-seamless-bg">
+        <img
+          src="/shtorm_2.jpg"
+          alt=""
+          loading="eager"
+          decoding="async"
+          class="shtorm-seamless-img"
+        />
+      </div>
+      <!-- Глибокий адаптивний градієнт затемнення (OLED Dark / Light Mode) -->
+      <div class="shtorm-bg-Scrim"></div>
+    </div>
+
+    <div class="relative z-10">
+      <slot />
+    </div>
+
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>

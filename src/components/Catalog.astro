@@ -1,0 +1,45 @@
+---
+/**
+ * Секція 01: Каталог товарів Alexov Shop (на першому місці).
+ * 1. Зіпка Alexov Street Team («Скоро в продажу», вигляд спереду/ззаду)
+ * 2. Фірмовий стікерпак («Немає в наявності»)
+ */
+import { PRODUCTS } from '../data/products';
+import ProductCard from './ProductCard.astro';
+import { translations } from '../data/i18n';
+---
+
+<section id="catalog" class="relative px-4 py-12 sm:px-6 md:py-16">
+  <div class="mx-auto max-w-[1140px]">
+    <!-- Заголовок секції -->
+    <div
+      data-reveal
+      class="mb-8 flex flex-col justify-between gap-4 pb-6 sm:mb-10 sm:flex-row sm:items-end"
+      style="box-shadow: inset 0 -1px 0 0 var(--c-divider);"
+    >
+      <div>
+        <span data-i18n="catalog.badge" class="tech-badge">
+          01 • КАТАЛОГ ТОВАРІВ
+        </span>
+        <h2
+          data-i18n="catalog.title"
+          class="mt-2.5 text-2xl font-semibold tracking-tight text-fg sm:text-4xl"
+        >
+          {translations.uk['catalog.title']}
+        </h2>
+        <slot name="admin" />
+      </div>
+      <p
+        data-i18n="catalog.subtitle"
+        class="max-w-sm text-xs leading-relaxed text-muted sm:text-right sm:text-sm"
+      >
+        Лімітовані дропи зі швидкою доставкою Новою Поштою
+      </p>
+    </div>
+
+    <!-- Сітка товарів -->
+    <div id="catalog-grid" class="mx-auto grid grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
+      {PRODUCTS.map((product) => <ProductCard product={product} />)}
+    </div>
+  </div>
+</section>

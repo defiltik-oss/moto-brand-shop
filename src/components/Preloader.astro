@@ -1,0 +1,53 @@
+---
+/**
+ * Preloader with Mascot 360° Rotation:
+ * Displays `public/mascot.png` spinning smoothly 360° in the center while assets load.
+ * At 100% completion, the mascot smoothly transitions into `public/logo.png`, which then
+ * glides up into the sticky header bar (`[data-header-logo]`).
+ */
+---
+
+<div
+  data-preloader
+  class="fixed inset-0 z-[100] flex items-center justify-center bg-bg"
+  role="status"
+  aria-label="Завантаження"
+>
+  <!-- Ambient radial glow behind mascot & logo -->
+  <div
+    data-preloader-glow
+    class="pointer-events-none absolute top-1/2 left-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(125,243,225,0.24),rgba(122,167,255,0.14)_55%,transparent)] blur-2xl"
+  ></div>
+
+  <!-- Sleek Liquid Glass orbital ring framing the spinning mascot -->
+  <div
+    data-preloader-stage
+    class="relative flex items-center justify-center"
+    style="perspective: 1000px;"
+  >
+    <div data-preloader-ring class="preloader-mascot-ring glass">
+      <span class="preloader-ring-sweep"></span>
+    </div>
+
+    <!-- Mascot spinning 360° in the center during loading -->
+    <img
+      data-preloader-mascot
+      src="/mascot.png"
+      width="1487"
+      height="1058"
+      alt="Маскот ALEXOV"
+      class="relative z-10 h-auto w-[min(46vw,220px)] object-contain drop-shadow-[0_20px_38px_rgba(37,99,255,0.55)] will-change-transform"
+    />
+  </div>
+</div>
+
+<!-- Large brand logo; transitions in from the mascot at 100%, then glides into the header -->
+<img
+  data-flying-logo
+  src="/logo.png"
+  width="1400"
+  height="295"
+  alt=""
+  aria-hidden="true"
+  class="pointer-events-none fixed top-1/2 left-1/2 z-[101] h-auto w-[min(76vw,680px)] opacity-0 will-change-transform"
+/>

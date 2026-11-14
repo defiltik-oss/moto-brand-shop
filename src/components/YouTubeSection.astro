@@ -1,0 +1,151 @@
+---
+import { SITE_CONFIG } from '../data/config';
+const featured = SITE_CONFIG.videos[0];
+---
+
+<section id="media" class="py-12 md:py-20 px-4 sm:px-6 relative">
+  <span id="youtube" class="absolute -top-20"></span>
+  <div class="max-w-[1140px] mx-auto">
+
+    <!-- Section Header (Strict & Minimal: Title Only) -->
+    <div class="pb-6 mb-8 flex items-end justify-between gap-4" style="box-shadow: inset 0 -1px 0 0 var(--c-divider);">
+      <div>
+        <span class="tech-badge block mb-2" data-i18n="youtube.index">02 • YOUTUBE</span>
+        <h2 class="hig-h2" data-i18n="youtube.title1">
+          Свіжі випуски
+        </h2>
+      </div>
+    </div>
+
+    <!-- Main Player + Playlist Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+
+      <!-- Active Featured Video Stage (7 Cols) -->
+      <div class="lg:col-span-7">
+        <div class="liquid-glass-elevated rounded-2xl overflow-hidden h-full flex flex-col justify-between p-4 sm:p-5">
+          <div
+            id="yt-player-stage"
+            data-yt-player-container
+            data-active-yt-id={featured.youtubeId}
+            class="group relative block aspect-video rounded-xl overflow-hidden border border-white/10"
+            style="background: rgba(8, 10, 14, 0.9);"
+          >
+            <!-- Cover Preview (hidden once iframe starts playing) -->
+            <div id="yt-cover-layer" class="absolute inset-0 z-10 cursor-pointer">
+              <img
+                id="yt-stage-img"
+                src={featured.thumb}
+                alt={featured.titleUk}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+
+              <!-- Center Play Button -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <button
+                  type="button"
+                  id="yt-play-trigger"
+                  aria-label="Запустити відео"
+                  class="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 cursor-pointer shadow-2xl relative z-10"
+                  style="border-radius: 9999px !important; background: rgba(9, 11, 17, 0.82) !important; border: 1.5px solid rgba(255, 255, 255, 0.35) !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);"
+                >
+                  <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24" style="color: #ffffff !important; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Top Meta Overlay -->
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                <span id="yt-stage-badge" class="liquid-pill px-2.5 py-1 rounded-md font-mono text-[10px] uppercase tracking-[0.08em] text-white" data-i18n="video.v1.badge">
+                  {featured.badgeUk}
+                </span>
+              </div>
+            </div>
+
+            <!-- Dynamic Iframe Mount Container -->
+            <div id="yt-iframe-mount" class="w-full h-full"></div>
+          </div>
+
+          <!-- Stage Caption & Controls Bar -->
+          <div class="pt-4 mt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+            <div class="min-w-0">
+              <span class="font-mono text-[10px] uppercase tracking-[0.12em] block mb-1 text-muted" data-i18n="youtube.nowPlaying">Обраний випуск</span>
+              <h3 id="yt-stage-title" class="text-[15px] sm:text-[17px] font-semibold tracking-[-0.02em] leading-snug text-fg break-words" data-i18n="video.v1.title">
+                {featured.titleUk}
+              </h3>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                id="yt-fullscreen-btn"
+                class="btn-secondary h-10 px-3.5 rounded-xl text-[12px] inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                title="На весь екран"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                </svg>
+                <span class="hidden sm:inline" data-i18n="youtube.fullscreen">На весь екран</span>
+              </button>
+              <a
+                id="yt-stage-cta"
+                href={`https://youtu.be/${featured.youtubeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary h-10 px-4 rounded-xl text-[12px] inline-flex items-center justify-center gap-2 shrink-0"
+              >
+                <span data-i18n="youtube.watchOnYt">Відкрити в YouTube</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Feed List (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col justify-between gap-3">
+        {SITE_CONFIG.videos.map((v, idx) => (
+          <button
+            type="button"
+            data-yt-id={v.youtubeId}
+            data-yt-thumb={v.thumb}
+            data-i18n-title-key={`video.${v.id}.title`}
+            data-i18n-badge-key={`video.${v.id}.badge`}
+            class={`yt-playlist-item liquid-glass rounded-xl p-3 flex items-center gap-3.5 text-left transition-all cursor-pointer min-w-0 ${idx === 0 ? 'active' : ''}`}
+          >
+            <div class="relative w-24 sm:w-32 aspect-video rounded-lg overflow-hidden shrink-0 border border-white/10" style="background: rgba(12, 14, 18, 0.7);">
+              <img src={v.thumb} alt={v.titleUk} class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <span class="font-mono text-[10px] font-semibold px-1.5 py-0.5 rounded bg-black/80 text-white">
+                  0{idx + 1}
+                </span>
+              </div>
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="yt-item-badge font-mono text-[10px] uppercase tracking-[0.08em] text-muted truncate" data-i18n={`video.${v.id}.badge`}>
+                  {v.badgeUk}
+                </span>
+              </div>
+              <h4 class="yt-item-title text-[12.5px] sm:text-[13px] font-medium leading-snug line-clamp-2 text-fg break-words" data-i18n={`video.${v.id}.title`}>
+                {v.titleUk}
+              </h4>
+            </div>
+          </button>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .yt-playlist-item.active {
+    background: var(--lg-fill-hover);
+    border-color: var(--c-border-strong) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  }
+</style>

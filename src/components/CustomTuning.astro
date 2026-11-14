@@ -1,0 +1,383 @@
+---
+const shtormPhotos = [
+  { src: '/shtorm_2.jpg', label: 'Corso Storm XR · E-2500 Trail · Профіль', pos: 'center 52%' },
+  { src: '/shtorm_1.jpg', label: 'Corso Storm XR · Високовольтна збірка', pos: 'center 55%' },
+  { src: '/shtorm_4.jpg', label: 'Corso Storm XR · Підвіска та геометрія', pos: 'center 50%' },
+  { src: '/shtorm_5.jpg', label: 'Corso Storm XR · Кастомний обвіс', pos: 'center 42%' },
+  { src: '/shtorm_3.jpg', label: 'Corso Storm XR · Силовий контур та вініл', pos: 'center 46%' },
+];
+---
+
+<section id="tuning" class="py-12 md:py-20 px-4 sm:px-6 relative">
+  <div class="max-w-[1140px] mx-auto">
+
+    <!-- Section Header -->
+    <div class="pb-7 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-5" style="box-shadow: inset 0 -1px 0 0 var(--c-divider);">
+      <div>
+        <div class="flex items-center gap-3 mb-2.5">
+          <span class="tech-badge" data-i18n="tuning.index">02 / АТЕЛЬЄ ЕЛЕКТРОТРАНСПОРТУ</span>
+          <span class="w-1 h-1 rounded-full bg-white/30"></span>
+          <span class="font-mono text-[11px] uppercase tracking-[0.12em] flex items-center gap-1.5 text-muted">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span data-i18n="tuning.badge">Лабораторія кастомного тюнінгу</span>
+          </span>
+        </div>
+        <h2 class="hig-h2">
+          <span data-i18n="tuning.title1">Кастомний тюнінг</span>{' '}
+          <span class="text-muted" data-i18n="tuning.title2">та збірка техніки.</span>
+        </h2>
+      </div>
+      <p class="text-xs sm:text-sm max-w-md leading-relaxed text-muted" data-i18n="tuning.desc">
+        Працюємо з електробайками та самокатами: збірка і налаштування високовольтних батарей, програмування контролерів, професійна пайка, фарбування рам, кастомна графіка та перетяжка сидінь.
+      </p>
+    </div>
+
+    <!-- Real Workshop Services Strip -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-8">
+      <div class="liquid-glass rounded-xl p-3.5">
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-1 text-muted" data-i18n="tuning.s1Tag">01 · АКБ</span>
+        <span class="text-[13px] font-semibold block text-fg" data-i18n="tuning.s1Title">Високовольтні батареї</span>
+        <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.s1Sub">Збірка 60V / 72V / 84V та Smart BMS</span>
+      </div>
+      <div class="liquid-glass rounded-xl p-3.5">
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-1 text-muted" data-i18n="tuning.s2Tag">02 · КОНТРОЛЕРИ</span>
+        <span class="text-[13px] font-semibold block text-fg" data-i18n="tuning.s2Title">Налаштування контролерів</span>
+        <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.s2Sub">BAC 4000/8000, Nucular, FarDriver</span>
+      </div>
+      <div class="liquid-glass rounded-xl p-3.5">
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-1 text-muted" data-i18n="tuning.s3Tag">03 · ПРОВОДКА</span>
+        <span class="text-[13px] font-semibold block text-fg" data-i18n="tuning.s3Title">Пайка та силові лінії</span>
+        <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.s3Sub">Роз'єми QS8/XT90, гідроізоляція</span>
+      </div>
+      <div class="liquid-glass rounded-xl p-3.5">
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-1 text-muted" data-i18n="tuning.s4Tag">04 · ФАРБУВАННЯ</span>
+        <span class="text-[13px] font-semibold block text-fg" data-i18n="tuning.s4Title">Фарбування рам і вузлів</span>
+        <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.s4Sub">Порошковий мат, глянець, супорти</span>
+      </div>
+      <div class="liquid-glass rounded-xl p-3.5">
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-1 text-muted" data-i18n="tuning.s5Tag">05 · ВІНІЛ І СТИЛЬ</span>
+        <span class="text-[13px] font-semibold block text-fg" data-i18n="tuning.s5Title">Кастомна графіка</span>
+        <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.s5Sub">Бронеплівка, лівреї, плотерний вініл</span>
+      </div>
+      <div class="liquid-glass rounded-xl p-3.5">
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-1 text-muted" data-i18n="tuning.s6Tag">06 · КОМФОРТ</span>
+        <span class="text-[13px] font-semibold block text-fg" data-i18n="tuning.s6Title">Перетяжка сидінь</span>
+        <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.s6Sub">Нековзкий зачіп під стант, строчка</span>
+      </div>
+    </div>
+
+    <!-- Split Studio Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- Left: Horizontal Showcase & Telemetry Preview (5 Cols) -->
+      <div class="lg:col-span-5 lg:sticky lg:top-20 flex flex-col gap-5">
+        <div class="liquid-glass-elevated rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 mb-5" style="box-shadow: inset 0 -1px 0 0 var(--c-divider);">
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.14em] block mb-1 text-muted" data-i18n="tuning.selectedPlatform">База проєкту</span>
+                <h3 id="tuning-preview-name" class="text-[20px] font-semibold tracking-[-0.025em] text-fg">Corso Storm XR / Sur-Ron</h3>
+              </div>
+              <span id="tuning-preview-tag" class="liquid-pill px-2.5 py-1 rounded-md font-mono text-[10px] uppercase tracking-[0.08em] text-fg">
+                SHTORM SERIES
+              </span>
+            </div>
+
+            <!-- Horizontal Cropped Real Photo Stage -->
+            <div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-3 border border-white/10" style="background: rgba(12, 14, 18, 0.7);">
+              <img
+                id="tuning-preview-img"
+                src="/shtorm_2.jpg"
+                alt="Corso Storm XR — кастомний проєкт Alexov"
+                class="w-full h-full object-cover transition-all duration-500"
+                style="object-position: center 52%;"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 pointer-events-none"></div>
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span id="tuning-photo-caption" class="font-mono text-[11px] text-white/90 tracking-[-0.01em]">
+                  Corso Storm XR · E-2500 Trail · Профіль
+                </span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-0.5 rounded bg-black/60 text-white/80">
+                  16:10 RAW
+                </span>
+              </div>
+            </div>
+
+            <!-- Horizontal Photo Switcher (Shtorm Series 1-5) -->
+            <div id="shtorm-gallery-thumbs" class="grid grid-cols-5 gap-2 mb-6">
+              {shtormPhotos.map((photo, idx) => (
+                <button
+                  type="button"
+                  data-photo-src={photo.src}
+                  data-photo-label={photo.label}
+                  data-photo-pos={photo.pos}
+                  class={`shtorm-thumb-btn relative aspect-[16/10] rounded-lg overflow-hidden transition-all cursor-pointer border border-white/15 ${idx === 0 ? 'ring-2 ring-white opacity-100' : 'opacity-55 hover:opacity-90'}`}
+                  aria-label={photo.label}
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.label}
+                    class="w-full h-full object-cover"
+                    style={`object-position: ${photo.pos};`}
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Telemetry Readouts -->
+          <div class="space-y-2.5 pt-2">
+            <div class="flex items-center justify-between py-2.5 px-3.5 rounded-xl liquid-pill">
+              <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-muted" data-i18n="tuning.specPower">Пікова потужність</span>
+              <span id="tuning-spec-power" class="font-mono text-[12px] font-medium text-fg">До 18.5 кВт (72V / 84V)</span>
+            </div>
+            <div class="flex items-center justify-between py-2.5 px-3.5 rounded-xl liquid-pill">
+              <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-muted" data-i18n="tuning.specFocus">Основні роботи</span>
+              <span id="tuning-spec-focus" class="font-mono text-[12px] font-medium text-right text-fg">АКБ, Контролер, Вініл, Сидіння</span>
+            </div>
+            <div class="flex items-center justify-between py-2.5 px-3.5 rounded-xl liquid-pill">
+              <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-muted" data-i18n="tuning.selectedCount">Обрано робіт</span>
+              <span id="tuning-count-badge" class="font-mono text-[12px] font-semibold text-fg">1 поз.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 3-Step Configurator (7 Cols) -->
+      <div class="lg:col-span-7">
+        <div class="liquid-glass rounded-2xl p-6 sm:p-8 space-y-8">
+
+          <!-- Step 01: Platform Selector -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <label class="font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-muted" data-i18n="tuning.step1">
+                Крок 01 — Оберіть тип техніки
+              </label>
+              <span class="font-mono text-[11px] text-muted">01 / 03</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="vehicle-selector">
+              <button
+                type="button"
+                data-vehicle="surron"
+                data-name="Corso Storm XR / Sur-Ron"
+                data-tag="SHTORM SERIES"
+                data-img="/shtorm_2.jpg"
+                data-power="До 18.5 кВт (72V / 84V)"
+                data-focus="АКБ, Контролер, Вініл, Сидіння"
+                class="vehicle-card glass-sub active text-left p-4 rounded-xl transition-all cursor-pointer"
+              >
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">CLASS A</span>
+                  <span class="w-2 h-2 rounded-full vehicle-dot" style="background: var(--text-primary);"></span>
+                </div>
+                <div class="text-[14px] font-semibold tracking-[-0.01em] mb-0.5 text-fg" data-i18n="tuning.v1Name">Електробайк Storm / Sur-Ron</div>
+                <div class="text-[11px] font-mono text-muted" data-i18n="tuning.v1Sub">Corso Storm XR / Light Bee / Talaria</div>
+              </button>
+
+              <button
+                type="button"
+                data-vehicle="kugoo"
+                data-name="Kugoo Kirin G-Booster / G2"
+                data-tag="ШАСІ 60V–72V"
+                data-img="/kugoo.png"
+                data-power="До 8.4 кВт (Повний привід)"
+                data-focus="Кастом АКБ, Пайка, Рульова, Фарбування"
+                class="vehicle-card glass-sub text-left p-4 rounded-xl transition-all cursor-pointer"
+              >
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">CLASS B</span>
+                  <span class="w-2 h-2 rounded-full vehicle-dot" style="background: var(--text-tertiary);"></span>
+                </div>
+                <div class="text-[14px] font-semibold tracking-[-0.01em] mb-0.5 text-fg" data-i18n="tuning.v2Name">Електросамокат Kugoo / Dualtron</div>
+                <div class="text-[11px] font-mono text-muted" data-i18n="tuning.v2Sub">Kirin G2 Pro / G3 / G-Booster</div>
+              </button>
+
+              <button
+                type="button"
+                data-vehicle="custom"
+                data-name="Індивідуальний електро-проєкт"
+                data-tag="CUSTOM BUILD"
+                data-img="/shtorm_1.jpg"
+                data-power="Конфігурація під замовлення"
+                data-focus="Збірка з нуля, Пайка, Фарбування, Сидіння"
+                class="vehicle-card glass-sub text-left p-4 rounded-xl transition-all cursor-pointer"
+              >
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">CLASS C</span>
+                  <span class="w-2 h-2 rounded-full vehicle-dot" style="background: var(--text-tertiary);"></span>
+                </div>
+                <div class="text-[14px] font-semibold tracking-[-0.01em] mb-0.5 text-fg" data-i18n="tuning.v3Name">Власний проєкт / Інша модель</div>
+                <div class="text-[11px] font-mono text-muted" data-i18n="tuning.v3Sub">Будь-який електробайк, пітбайк або самокат</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 02: Upgrade Modules -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <label class="font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-muted" data-i18n="tuning.step2">
+                Крок 02 — Оберіть необхідні роботи та тюнінг
+              </label>
+              <span class="font-mono text-[11px] text-muted">02 / 03</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="tuning-modules">
+              <label class="tuning-chip glass-sub active flex items-start gap-3 p-3.5 rounded-xl cursor-pointer transition-all">
+                <input type="checkbox" name="module" value="Високовольтна батарея (60V/72V/84V)" checked class="mt-0.5 accent-sky-400" />
+                <div>
+                  <span class="text-[13px] font-medium block leading-snug text-fg" data-i18n="tuning.mod1Title">Високовольтна батарея (60V / 72V / 84V)</span>
+                  <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.mod1Sub">Збірка високострумових комірок, налаштування Smart BMS</span>
+                </div>
+              </label>
+
+              <label class="tuning-chip glass-sub flex items-start gap-3 p-3.5 rounded-xl cursor-pointer transition-all">
+                <input type="checkbox" name="module" value="Налаштування контролера (BAC / Nucular)" class="mt-0.5 accent-sky-400" />
+                <div>
+                  <span class="text-[13px] font-medium block leading-snug text-fg" data-i18n="tuning.mod2Title">Налаштування контролера (BAC / Nucular)</span>
+                  <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.mod2Sub">Прошивка карт газу, фазного струму та рекуперації</span>
+                </div>
+              </label>
+
+              <label class="tuning-chip glass-sub flex items-start gap-3 p-3.5 rounded-xl cursor-pointer transition-all">
+                <input type="checkbox" name="module" value="Пайка, силова проводка та гідроізоляція" class="mt-0.5 accent-sky-400" />
+                <div>
+                  <span class="text-[13px] font-medium block leading-snug text-fg" data-i18n="tuning.mod3Title">Пайка, силова проводка та гідроізоляція</span>
+                  <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.mod3Sub">Силові кабелі AWG, роз'єми QS8/XT90, захист від води</span>
+                </div>
+              </label>
+
+              <label class="tuning-chip glass-sub flex items-start gap-3 p-3.5 rounded-xl cursor-pointer transition-all">
+                <input type="checkbox" name="module" value="Фарбування рами, маятника та деталей" class="mt-0.5 accent-sky-400" />
+                <div>
+                  <span class="text-[13px] font-medium block leading-snug text-fg" data-i18n="tuning.mod4Title">Фарбування рами, маятника та деталей</span>
+                  <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.mod4Sub">Порошкове фарбування з підготовкою та запіканням</span>
+                </div>
+              </label>
+
+              <label class="tuning-chip glass-sub flex items-start gap-3 p-3.5 rounded-xl cursor-pointer transition-all">
+                <input type="checkbox" name="module" value="Кастомна графіка, вініл та бронеплівка" class="mt-0.5 accent-sky-400" />
+                <div>
+                  <span class="text-[13px] font-medium block leading-snug text-fg" data-i18n="tuning.mod5Title">Кастомна графіка та обклеювання вінілом</span>
+                  <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.mod5Sub">Індивідуальний дизайн лівреї, товста бронеплівка</span>
+                </div>
+              </label>
+
+              <label class="tuning-chip glass-sub flex items-start gap-3 p-3.5 rounded-xl cursor-pointer transition-all">
+                <input type="checkbox" name="module" value="Перетяжка сидіння під стант та зачіп" class="mt-0.5 accent-sky-400" />
+                <div>
+                  <span class="text-[13px] font-medium block leading-snug text-fg" data-i18n="tuning.mod6Title">Перетяжка сидіння (кастомний зачіп)</span>
+                  <span class="text-[11px] block mt-0.5 text-muted" data-i18n="tuning.mod6Sub">Нековзкі матеріали з ребрами під стант та місто</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 03: Client Brief & Contact -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <label class="font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-muted" data-i18n="tuning.step3">
+                Крок 03 — Ваші контакти та опис задачі
+              </label>
+              <span class="font-mono text-[11px] text-muted">03 / 03</span>
+            </div>
+
+            <form id="tuning-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="tuning-client-name" class="block font-mono text-[10px] uppercase tracking-[0.1em] mb-1.5 text-muted" data-i18n="tuning.labelName">
+                    Ваше ім'я
+                  </label>
+                  <input
+                    id="tuning-client-name"
+                    type="text"
+                    required
+                    placeholder="Олександр"
+                    data-i18n-placeholder="tuning.placeholderName"
+                    class="hig-input w-full px-3.5 py-2.5 rounded-xl text-[13px]"
+                  />
+                </div>
+                <div>
+                  <label for="tuning-client-contact" class="block font-mono text-[10px] uppercase tracking-[0.1em] mb-1.5 text-muted" data-i18n="tuning.labelContact">
+                    Telegram (@юзернейм) або телефон
+                  </label>
+                  <input
+                    id="tuning-client-contact"
+                    type="text"
+                    required
+                    placeholder="@username або +380..."
+                    data-i18n-placeholder="tuning.placeholderContact"
+                    class="hig-input w-full px-3.5 py-2.5 rounded-xl text-[13px]"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="tuning-budget" class="block font-mono text-[10px] uppercase tracking-[0.1em] mb-1.5 text-muted" data-i18n="tuning.labelBudget">
+                    Орієнтовний бюджет
+                  </label>
+                  <select id="tuning-budget" class="hig-input w-full px-3.5 py-2.5 rounded-xl text-[13px] cursor-pointer">
+                    <option value="Стандарт (до $500)" data-i18n="tuning.budget1">Стандарт: вініл / перетяжка / ТО (до $500)</option>
+                    <option value="Середній ($500 – $1,500)" selected data-i18n="tuning.budget2">Середній: контролер / фарбування ($500 – $1,500)</option>
+                    <option value="Повний кастом ($1,500+)" data-i18n="tuning.budget3">Повний кастом: АКБ + контролер + стайлінг ($1,500+)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="tuning-notes" class="block font-mono text-[10px] uppercase tracking-[0.1em] mb-1.5 text-muted" data-i18n="tuning.labelNotes">
+                    Модель техніки та побажання
+                  </label>
+                  <input
+                    id="tuning-notes"
+                    type="text"
+                    placeholder="Наприклад: Corso Storm XR, перетягнути сидіння та налаштувати контролер..."
+                    data-i18n-placeholder="tuning.placeholderNotes"
+                    class="hig-input w-full px-3.5 py-2.5 rounded-xl text-[13px]"
+                  />
+                </div>
+              </div>
+
+              <!-- Submit Action -->
+              <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <p id="tuning-feedback" class="text-[12px] font-mono text-muted" data-i18n="tuning.helperText">
+                  Відправка відкриє прямий діалог із майстром у Telegram (@Alexov_Manager) з готовою специфікацією.
+                </p>
+                <button
+                  type="submit"
+                  class="btn-primary h-11 px-6 rounded-xl text-[13px] inline-flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+                >
+                  <span data-i18n="tuning.submitBtn">Відправити заявку на розрахунок</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vehicle-card,
+  .tuning-chip {
+    background: var(--lg-sub-fill);
+    border: 1px solid var(--c-border);
+  }
+  .vehicle-card:hover,
+  .tuning-chip:hover {
+    background: var(--lg-sub-hover);
+    border-color: var(--c-border-strong);
+  }
+  .vehicle-card.active,
+  .tuning-chip.active {
+    background: var(--lg-sub-hover);
+    border-color: var(--c-border-strong);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import TermsModal from '../components/TermsModal.astro';
+import Layout from '../layouts/Layout.astro';
+import SplashScreen from '../components/SplashScreen.astro';
+import MaintenanceScreen from '../components/MaintenanceScreen.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Catalog from '../components/Catalog.astro';
+import CatalogAdmin from '../components/CatalogAdmin.astro';
+import CustomTuning from '../components/CustomTuning.astro';
+import YouTubeSection from '../components/YouTubeSection.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import ProblemsSection from '../components/ProblemsSection.astro';
+import Footer from '../components/Footer.astro';
+import SettingsDrawer from '../components/SettingsDrawer.astro';
+import OrderModal from '../components/OrderModal.astro';
+import ProfileModal from '../components/ProfileModal.astro';
+import RoleShop from '../components/RoleShop.astro';
+import LeaderboardModal from '../components/LeaderboardModal.astro';
+---
+
+<Layout title="ALEXOV SHOP — Офіційний магазин мерчу та медіа-платформа">
+  <SplashScreen />
+  <MaintenanceScreen />
+  <div id="app-protected-content" inert>
+    <Header />
+    <main>
+      <Hero />
+      <!-- 1. Каталог -->
+      <Catalog>
+        <CatalogAdmin slot="admin" />
+      </Catalog>
+      <!-- Тимчасово прихована секція «Тюнінг» (код повністю збережено) -->
+      <div class="hidden" aria-hidden="true" hidden>
+        <CustomTuning />
+      </div>
+      <!-- 2. YouTube -->
+      <YouTubeSection />
+      <!-- 3. Реклама -->
+      <PromoBanner />
+      <!-- 4. Допомога -->
+      <ProblemsSection />
+    </main>
+    <Footer />
+    <SettingsDrawer />
+    <OrderModal />
+    <ProfileModal />
+    <RoleShop />
+    <LeaderboardModal />
+  </div>
+  <TermsModal />
+</Layout>

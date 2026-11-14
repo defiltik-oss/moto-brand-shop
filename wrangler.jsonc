@@ -1,0 +1,32 @@
+{
+  "name": "alexov-shop",
+  "compatibility_date": "2026-11-02",
+  "pages_build_output_dir": "./dist",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "alexov-shop-db",
+      "database_id": "89e17d39-8510-4c8c-93a1-c2140bc642ac"
+    }
+  ],
+  "env": {
+    "production": {
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "alexov-shop-db",
+          "database_id": "89e17d39-8510-4c8c-93a1-c2140bc642ac"
+        }
+      ]
+    },
+    "preview": {
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "alexov-shop-db",
+          "database_id": "89e17d39-8510-4c8c-93a1-c2140bc642ac"
+        }
+      ]
+    }
+  }
+}

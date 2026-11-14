@@ -1,0 +1,147 @@
+---
+const faqs = [
+  {
+    id: 'faq1',
+    code: 'SYS-01',
+    q: 'Як дізнатися про старт продажів фірмової зіпки Alexov?',
+    a: 'Слідкуйте за анонсами в нашому офіційному Telegram-каналі @Alexov_Street_Team або напишіть напряму менеджеру @Alexov_Manager для попереднього бронювання свого розміру.',
+  },
+  {
+    id: 'faq2',
+    code: 'SYS-02',
+    q: 'Як здійснюється оплата та доставка замовлень?',
+    a: 'Оплата здійснюється на офіційну картку або Банку Monobank. Відправка замовлень виконується Новою Поштою по всій Україні протягом 24–48 годин, трек-номер надходить у Telegram.',
+  },
+  {
+    id: 'faq3',
+    code: 'SYS-03',
+    q: 'Що робити, якщо сторінка або відео не оновлюються в Telegram?',
+    a: 'Натисніть на три крапки у верхньому правому куті вікна Telegram Mini App та оберіть «Оновити сторінку» (Reload Page), або відкрийте відео напряму в застосунку YouTube кнопкою під плеєром.',
+  },
+  {
+    id: 'faq4',
+    code: 'SYS-04',
+    q: 'Як замовити рекламну інтеграцію або запропонувати співпрацю?',
+    a: 'Перейдіть у розділ «Реклама» або напишіть напряму нашому менеджеру @Alexov_Manager у Telegram з описом вашого бренду чи пропозиції.',
+  },
+];
+---
+
+<section id="problems" class="py-12 md:py-20 px-4 sm:px-6 relative">
+  <span id="support" class="absolute -top-20"></span>
+  <div class="max-w-[1140px] mx-auto">
+
+    <!-- Section Header -->
+    <div class="pb-7 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-5" style="box-shadow: inset 0 -1px 0 0 var(--c-divider);">
+      <div>
+        <div class="flex items-center gap-3 mb-2.5">
+          <span class="tech-badge" data-i18n="support.index">04 / ДОПОМОГА ТА ІНСТРУКЦІЇ</span>
+        </div>
+        <h2 class="hig-h2">
+          <span data-i18n="support.title1">Інструкції, вирішення проблем</span>{' '}
+          <span class="text-muted" data-i18n="support.title2">та часті запитання.</span>
+        </h2>
+      </div>
+
+      <a
+        href="https://t.me/Alexov_Manager"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-secondary h-10 px-4 rounded-xl text-[13px] inline-flex items-center gap-2 self-start md:self-auto"
+      >
+        <span data-i18n="support.directBot">Написати @Alexov_Manager</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Visual iOS / Face ID Troubleshooting Guide Card -->
+    <div class="liquid-glass-elevated rounded-2xl p-6 sm:p-8 mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <!-- Left: 3-Step iOS Instructions (7 Cols) -->
+        <div class="lg:col-span-7 space-y-5">
+          <div>
+            <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md liquid-pill font-mono text-[10px] uppercase tracking-[0.12em] text-amber-400 mb-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span data-i18n="support.iosBadge">ВАЖЛИВО ДЛЯ КОРИСТУВАЧІВ IPHONE (iOS)</span>
+            </span>
+            <h3 class="text-[18px] sm:text-[20px] font-semibold tracking-[-0.02em] text-fg mb-2" data-i18n="support.iosTitle">
+              Не прикріплюється скріншот оплати з галереї на iPhone?
+            </h3>
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-muted" data-i18n="support.iosDesc">
+              Якщо на вашому iPhone увімкнено захист програми «Фото» за допомогою Face ID («Вимагати Face ID»), вбудований браузер Telegram може не бачити вибрані фотографії. Виконайте 3 прості кроки:
+            </p>
+          </div>
+
+          <div class="space-y-2.5">
+            <div class="liquid-pill rounded-xl p-3.5 flex items-start gap-3">
+              <span class="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-fg shrink-0">01</span>
+              <div>
+                <h4 class="text-[13px] font-semibold text-fg" data-i18n="support.iosStep1Title">Крок 1 — Відкрийте екран «Додому»</h4>
+                <p class="text-[12px] text-muted mt-0.5" data-i18n="support.iosStep1Desc">Знайдіть стандартний застосунок «Фото» (Photos) на iPhone та затисніть його іконку пальцем.</p>
+              </div>
+            </div>
+
+            <div class="liquid-pill rounded-xl p-3.5 flex items-start gap-3">
+              <span class="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-fg shrink-0">02</span>
+              <div>
+                <h4 class="text-[13px] font-semibold text-fg" data-i18n="support.iosStep2Title">Крок 2 — Вимкніть вимогу Face ID</h4>
+                <p class="text-[12px] text-muted mt-0.5" data-i18n="support.iosStep2Desc">У меню, що з’явиться, натисніть «Не вимагати Face ID» (Don’t Require Face ID) та підтвердьте дію.</p>
+              </div>
+            </div>
+
+            <div class="liquid-pill rounded-xl p-3.5 flex items-start gap-3">
+              <span class="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-fg shrink-0">03</span>
+              <div>
+                <h4 class="text-[13px] font-semibold text-fg" data-i18n="support.iosStep3Title">Крок 3 — Прикріпіть скріншот або напишіть менеджеру</h4>
+                <p class="text-[12px] text-muted mt-0.5" data-i18n="support.iosStep3Desc">Поверніться в Alexov Shop і прикріпіть чек, або просто надішліть скріншот в особисті повідомлення @Alexov_Manager.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Visual Screenshot (/problem-1.1.png) (5 Cols) -->
+        <div class="lg:col-span-5">
+          <div class="liquid-pill rounded-2xl p-3.5 flex flex-col items-center">
+            <div class="relative w-full max-h-[300px] rounded-xl overflow-hidden flex items-center justify-center bg-black/50 p-2 border border-white/10">
+              <img
+                src="/problem-1.1.png"
+                alt="Інструкція iOS Face ID для Фото"
+                loading="lazy"
+                decoding="async"
+                class="max-h-[275px] w-auto object-contain rounded-lg"
+              />
+            </div>
+            <p class="font-mono text-[10.5px] text-center text-muted mt-2.5" data-i18n="support.iosImgCaption">
+              Наочна інструкція: вимкнення запиту Face ID для застосунку «Фото» в iOS
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2x2 Diagnostic & FAQ Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {faqs.map((item) => (
+        <div class="liquid-glass rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[10px] uppercase tracking-[0.12em] px-2 py-0.5 rounded liquid-pill text-muted">
+                {item.code}
+              </span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">FAQ</span>
+            </div>
+            <h3 class="text-[16px] font-semibold tracking-[-0.015em] mb-2 text-fg" data-i18n={`${item.id}.q`}>
+              {item.q}
+            </h3>
+            <p class="text-[13px] leading-relaxed text-muted" data-i18n={`${item.id}.a`}>
+              {item.a}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,74 @@
+---
+import { SITE_CONFIG } from '../data/config';
+---
+
+<footer class="site-footer pt-10 px-4 sm:px-6 relative">
+  <div class="max-w-[1140px] mx-auto">
+
+    <!-- Main Footer Card -->
+    <div class="liquid-glass rounded-2xl p-6 sm:p-10 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+        <!-- Brand Column (5 Cols) -->
+        <div class="md:col-span-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl liquid-pill p-1.5 flex items-center justify-center shrink-0">
+                <img src="/mascot.png" alt="" class="w-full h-full object-contain" />
+              </div>
+              <div>
+                <img src="/logo.png" alt="Alexov Shop" class="mb-1 block h-5 max-w-full object-contain object-left" />
+                <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">STREETWEAR & MEDIA PLATFORM</span>
+              </div>
+            </div>
+            <p class="text-[13px] leading-relaxed max-w-sm text-muted" data-i18n="footer.aboutDesc">
+              Офіційний магазин лімітованого мерчу та медіа-платформа команди Alexov Street Team.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 flex items-center gap-3">
+            <span class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span data-i18n="footer.status">Усі сервіси активні</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Ecosystem Column (4 Cols) -->
+        <div class="md:col-span-5">
+          <span class="font-mono text-[10px] uppercase tracking-[0.14em] block mb-4 text-muted" data-i18n="footer.colSocials">Офіційні ресурси</span>
+          <div class="space-y-2.5">
+            {SITE_CONFIG.socials.map((soc) => (
+              <a
+                href={soc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="liquid-pill rounded-xl px-3.5 py-2.5 flex items-center justify-between group transition-all"
+              >
+                <div>
+                  <span class="text-[13px] font-medium block text-fg" data-i18n={`social.${soc.id}.label`}>{soc.labelUk}</span>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.06em] text-muted" data-i18n={`social.${soc.id}.sub`}>{soc.subUk}</span>
+                </div>
+                <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-muted group-hover:text-fg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-muted">
+      <p data-i18n="footer.rights">© 2026 Alexov Shop. Усі права захищені.</p>
+      <div class="flex items-center gap-4 font-mono text-[11px]">
+        <button type="button" data-open-terms data-i18n="terms.title" class="hover:underline text-fg">Політика користування</button>
+        <span>·</span>
+        <a href="#top" data-anchor-link="top" class="hover:underline text-fg" data-i18n="footer.up">НАГОРУ ↑</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

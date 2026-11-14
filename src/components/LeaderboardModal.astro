@@ -1,0 +1,43 @@
+<dialog id="leaderboard-modal" class="rider-dialog drawer-dialog glass-modal interface-drawer" aria-labelledby="leaderboard-title">
+  <div class="rider-dialog-heading">
+    <div>
+      <h2 id="leaderboard-title" data-i18n="jet.leaderboardTitle">Глобальний рейтинг райдерів</h2>
+      <p class="text-muted text-sm" data-i18n="jet.leaderboardSub">Топ райдерів за балансом JET</p>
+    </div>
+    <form method="dialog">
+      <button type="submit" class="liquid-pill modal-top-close" aria-label="Закрити">×</button>
+    </form>
+  </div>
+  <div class="drawer-body">
+  <p id="leaderboard-status" class="text-muted text-sm" role="status"></p>
+  <ol id="leaderboard-list" class="space-y-2"></ol>
+  </div>
+</dialog>
+
+<dialog id="rider-modal" class="rider-dialog rider-card drawer-dialog glass-modal interface-drawer" aria-labelledby="rider-name">
+  <div class="rider-dialog-heading">
+    <div class="flex items-center gap-3 min-w-0">
+      <span class="rider-avatar rider-avatar-large">
+        <img id="rider-avatar" class="hidden" alt="" />
+        <span id="rider-initials"></span>
+      </span>
+      <div class="min-w-0">
+        <h2 id="rider-name" class="break-words"></h2>
+        <p id="rider-handle" class="text-muted text-sm break-all"></p>
+      </div>
+    </div>
+    <form method="dialog">
+      <button type="submit" class="liquid-pill modal-top-close" aria-label="Закрити">×</button>
+    </form>
+  </div>
+  <div class="drawer-body">
+  <div class="rider-stats">
+    <span id="rider-rank" class="liquid-pill"></span>
+    <span id="rider-tokens" class="liquid-pill"></span>
+    <span id="rider-level" class="liquid-pill"></span>
+  </div>
+  <div id="rider-roles" class="flex flex-wrap gap-2 my-4"></div>
+  <h3 class="text-sm font-semibold mb-2" data-i18n="auth.rewardsLabel">Нагороди та досягнення</h3>
+  <div id="rider-achievements" class="space-y-2"></div>
+  </div>
+</dialog>

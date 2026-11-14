@@ -1,0 +1,139 @@
+---
+import { SITE_CONFIG } from '../data/config';
+---
+
+<section id="about" class="py-12 md:py-20 px-4 sm:px-6 relative">
+  <div class="max-w-[1140px] mx-auto">
+
+    <!-- Section Header -->
+    <div class="pb-7 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-5" style="box-shadow: inset 0 -1px 0 0 var(--c-divider);">
+      <div>
+        <div class="flex items-center gap-3 mb-2.5">
+          <span class="tech-badge" data-i18n="about.index">05 • ПРО НАС ТА КОМ’ЮНІТІ</span>
+          <span class="w-1 h-1 rounded-full bg-white/30"></span>
+          <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">EST. 2024 · UKRAINE</span>
+        </div>
+        <h2 class="hig-h2">
+          <span data-i18n="about.title1">Філософія бренду</span>{' '}
+          <span class="text-muted" data-i18n="about.title2">Alexov Street Team.</span>
+        </h2>
+      </div>
+      <p class="text-xs sm:text-sm max-w-md leading-relaxed text-muted" data-i18n="about.subtitle">
+        Ми об’єднуємо вуличну мото-культуру, міський стант на електробайках та закриті дропи фірмового екіпірування для райдерів.
+      </p>
+    </div>
+
+    <!-- Main About Showcase Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch mb-5">
+
+      <!-- Left: Brand Story & Pillars (7 Cols) -->
+      <div class="lg:col-span-7 liquid-glass-elevated rounded-2xl p-5 sm:p-8 flex flex-col justify-between min-w-0 overflow-hidden">
+        <div>
+          <div class="flex items-center gap-3.5 mb-5">
+            <div class="w-12 h-12 rounded-xl liquid-pill p-1.5 flex items-center justify-center shrink-0">
+              <img src="/mascot.png" alt="Alexov Mascot" class="w-full h-full object-contain" />
+            </div>
+            <div class="min-w-0">
+              <span class="text-[15px] sm:text-[16px] font-bold tracking-[-0.02em] block text-fg truncate">ALEXOV OFFICIAL</span>
+              <span class="font-mono text-[10.5px] sm:text-[11px] uppercase tracking-[0.1em] text-muted block truncate">STREET TEAM · SHTORM SERIES</span>
+            </div>
+          </div>
+
+          <h3 class="text-[18px] sm:text-[22px] font-semibold tracking-[-0.025em] leading-snug mb-3 text-fg" data-i18n="about.cardHeadline">
+            Більше, ніж просто магазин. Вуличне ком’юніті та авторський стиль.
+          </h3>
+
+          <p class="text-[13.5px] sm:text-[14px] leading-relaxed mb-6 text-muted" data-i18n="about.cardDesc">
+            Alexov Shop — офіційна платформа команди Alexov Street Team. Ми знімаємо видовищні стант-випуски на електробайках серії Shtorm та Sur-Ron, розвиваємо українську райдер-спільноту та випускаємо лімітований вуличний мерч для своїх.
+          </p>
+        </div>
+
+        <!-- Key Metrics Bar (Responsive Liquid Glass Mini-Cards — Zero Overflow) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-2">
+          <div class="liquid-pill rounded-xl px-4 py-3.5 min-w-0 overflow-hidden flex sm:block items-center justify-between gap-3">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-0.5 sm:mb-1 text-muted" data-i18n="about.stat1Top"> КОМ’ЮНІТІ</span>
+              <span class="text-[11.5px] block text-muted sm:hidden" data-i18n="about.stat1Sub">Активна аудиторія райдерів</span>
+            </div>
+            <span class="font-mono text-[17px] sm:text-[19px] font-bold tracking-[-0.03em] block text-fg shrink-0">6.52K+</span>
+            <span class="text-[11px] hidden sm:block mt-1 text-muted leading-snug" data-i18n="about.stat1Sub">Активна аудиторія райдерів</span>
+          </div>
+
+          <div class="liquid-pill rounded-xl px-4 py-3.5 min-w-0 overflow-hidden flex sm:block items-center justify-between gap-3">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-0.5 sm:mb-1 text-muted" data-i18n="about.stat2Top">КОНТЕНТ</span>
+              <span class="text-[11.5px] block text-muted sm:hidden" data-i18n="about.stat2Sub">Влоги та міський стант</span>
+            </div>
+            <span class="font-mono text-[16px] sm:text-[18px] font-bold tracking-[-0.02em] block text-fg shrink-0" data-i18n="about.stat2Val">SHTORM</span>
+            <span class="text-[11px] hidden sm:block mt-1 text-muted leading-snug" data-i18n="about.stat2Sub">Влоги та міський стант</span>
+          </div>
+
+          <div class="liquid-pill rounded-xl px-4 py-3.5 min-w-0 overflow-hidden flex sm:block items-center justify-between gap-3">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] block mb-0.5 sm:mb-1 text-muted" data-i18n="about.stat3Top">МЕРЧ</span>
+              <span class="text-[11.5px] block text-muted sm:hidden" data-i18n="about.stat3Sub">Закриті лімітовані дропи</span>
+            </div>
+            <span class="font-mono text-[16px] sm:text-[18px] font-bold tracking-[-0.02em] block text-fg shrink-0" data-i18n="about.stat3Val">420 GSM</span>
+            <span class="text-[11px] hidden sm:block mt-1 text-muted leading-snug" data-i18n="about.stat3Sub">Закриті лімітовані дропи</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Horizontal Shtorm Series Visual Card (5 Cols) -->
+      <div class="lg:col-span-5 liquid-glass rounded-2xl p-4 sm:p-5 flex flex-col justify-between min-w-0 overflow-hidden">
+        <div class="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 border border-white/10" style="background: rgba(12, 14, 18, 0.7);">
+          <img
+            src="/shtorm_4.jpg"
+            alt="Corso Storm XR — Alexov Street Team"
+            class="w-full h-full object-cover"
+            style="object-position: center 50%;"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2">
+            <span class="font-mono text-[10.5px] sm:text-[11px] text-white/90 truncate">Corso Storm XR · E-2500 Trail</span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-0.5 rounded bg-black/60 text-white/80 shrink-0">SHTORM</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-[0.12em] block mb-1 text-muted" data-i18n="about.photoTag">НАША АТМОСФЕРА</span>
+          <h4 class="text-[15px] font-semibold mb-1.5 text-fg" data-i18n="about.photoTitle">
+            Справжній вуличний драйв у кожному кадрі
+          </h4>
+          <p class="text-[12px] leading-relaxed text-muted" data-i18n="about.photoDesc">
+            Усі наші колекції одягу, вінілові стікерпаки та відеопроєкти народжуються прямо на вулицях під час реальних заїздів та тренувань команди Alexov.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Official Social Channels Strip -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      {SITE_CONFIG.socials.map((soc) => (
+        <a
+          href={soc.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="liquid-pill rounded-xl p-4 flex items-center justify-between gap-3 group transition-all min-w-0 overflow-hidden"
+        >
+          <div class="min-w-0">
+            <span class="text-[14px] font-semibold block mb-0.5 text-fg truncate" data-i18n={`social.${soc.id}.label`}>
+              {soc.labelUk}
+            </span>
+            <span class="font-mono text-[11px] tracking-[0.04em] text-muted block truncate" data-i18n={`social.${soc.id}.sub`}>
+              {soc.subUk}
+            </span>
+          </div>
+          <div class="w-8 h-8 rounded-lg liquid-glass flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-fg">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

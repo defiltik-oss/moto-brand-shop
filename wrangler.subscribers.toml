@@ -1,0 +1,17 @@
+name = "alexov-shop-subscribers"
+main = "workers/subscribers.mjs"
+compatibility_date = "2026-11-02"
+workers_dev = false
+
+[triggers]
+crons = ["7,22,37,52 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "alexov-shop-db"
+database_id = "89e17d39-8510-4c8c-93a1-c2140bc642ac"
+
+# For KV caching, bind the same namespace here and in Pages as SUBSCRIBER_CACHE:
+# [[kv_namespaces]]
+# binding = "SUBSCRIBER_CACHE"
+# id = "<existing KV namespace ID>"
